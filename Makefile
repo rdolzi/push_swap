@@ -3,7 +3,7 @@ NAME = push_swap
 SRCS = main.c \
 	   ./rules/push.c ./rules/swap.c \
 	   ./rules/rotate.c ./rules/reverse_rotate.c \
-	   ./utils/utils.c \
+	   ./utils/utils.c ./utils/initialize_arrays.c \
 
 FLAGS = -Wextra -Werror -Wall
 
