@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 15:49:40 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 16:58:24 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 //        convertibili in int da func ft_atoi
 //     c. I numeri possono essere positivi o negativi.
 //     d. I numeri non possono essere duplicati
+//	   e. Contare il numero di elementi con argc
 // 2.  Dopo aver convertito i numeri, è necessario
 //     contare quanti sono per initializzazione dei stack.
 // 3.  Cosa significa (give the prompt back) in caso non ci siano parametri ??
@@ -48,9 +49,14 @@
 // BONUS:
 // If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.   verificare che per empty si intende index zero null(?)
 
-ft_array_len
-int	main(void)
+
+int	main(int argc, char **argv)
 {
+	int	array_len;
 	int	*stack_a;
 	int	*stack_b;
+
+	(void)argv;
+	array_len = argc - 1;
+	printf(">%d", array_len);
 }
