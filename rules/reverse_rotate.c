@@ -6,18 +6,18 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:16:51 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 12:19:04 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 17:03:38 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // rra (reverse rotate a): 
 //     Shift down all elements of stack a by 1.
 //     The last element becomes the first one.
 void	rra(int *stack_a)
 {
-
+	(void)stack_a;
 }
 
 // rrb (reverse rotate b): 
@@ -25,7 +25,7 @@ void	rra(int *stack_a)
 //     The last element becomes the first one.
 void	rrb(int *stack_b)
 {
-
+	(void)stack_b;
 }
 
 // rrr : rra and rrb at the same time.

@@ -13,11 +13,11 @@ RM = rm -f
 OBJS = ${SRCS:.c=.o}
 
 %.o: %.c
-	$(CC) -Imlx -g -c $< -o ${<:.c=.o}
+	$(CC) -g -c $< -o ${<:.c=.o}
 
 		
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(NAME)
+	$(CC) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 

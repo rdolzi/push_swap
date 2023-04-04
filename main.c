@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 16:58:24 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 17:01:26 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@
 // BONUS:
 // If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.   verificare che per empty si intende index zero null(?)
 
-
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int	array_len;
-	int	*stack_a;
-	int	*stack_b;
+	// int	*stack_a;
+	// int	*stack_b;
 
 	(void)argv;
 	array_len = argc - 1;
