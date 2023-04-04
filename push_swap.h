@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 17:58:30 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 18:37:02 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	pa(int *stack_a, int *stack_b);
 void	pb(int *stack_a, int *stack_b);
 
 //UTILS
-int		ft_array_len(int *stack);
-void	initialize_arrays(int *stack_a, int *stack_b,
-			char **argv, int array_len);
+int		ft_atoi(char *str);
+void	initialize_arrays(int *stack_a, char **argv, int len);
 
 #endif

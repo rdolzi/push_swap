@@ -6,17 +6,20 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 18:04:36 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 18:39:07 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	initialize_arrays(int *stack_a, int *stack_b,
-		char **argv, int array_len)
+//se errore fare i free degli array
+void	fill_stack(int *stack_a, char **argv, int len)
 {
-	(void)stack_a;
-	(void)stack_b;
-	array_len = 0;
-	printf(">%s", argv[0]);
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		stack_a = ft_atoi((*argv)++);
+	}
 }
