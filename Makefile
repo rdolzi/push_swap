@@ -1,6 +1,9 @@
 NAME = push_swap
 
 SRCS = main.c \
+	   ./rules/push.c ./rules/swap.c \
+	   ./rules/rotate.c ./rules/reverse_rotate.c \
+	   ./utils/utils.c \
 
 FLAGS = -Wextra -Werror -Wall
 

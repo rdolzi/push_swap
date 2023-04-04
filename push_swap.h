@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 12:20:28 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/04 15:56:32 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ void	rrr(int *stack_a, int *stack_b);
 //PUSH
 void	pa(int *stack_a, int *stack_b);
 void	pb(int *stack_a, int *stack_b);
+
+//UTILS
+int		ft_array_len(int *stack);
 
 #endif
