@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 18:48:41 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/05 23:06:29 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,26 @@
 //controllare validità messaggio argc == 1
 //come controllare che stack_b sia vuoto durante output, va fatto il free?
 //rename file initialize_arrays.c in initialize.c
+//gestione input (se len == 1 bisogna usare ft_split)
 int	main(int argc, char **argv)
 {
 	int	array_len;
 	int	*stack_a;
 	int	*stack_b;
-
+	
+	(void)argv;
 	if (argc == 1)
 	{
 		exit(0);
 	}
-	array_len = argc - 1;
-	stack_a = (int) malloc(array_len * sizeof(int));
-	stack_b = (int) malloc(array_len * sizeof(int));
-	if (!stack_a || !stack_b)
-		exit(write(1, "Error\n", ) * 0);
-	fill_stack(stack_a, ++argv, array_len);
+	//array_len = argc - 1;
+	argv = compute_input(argc, argv);
+	stack_a = (int *) malloc(array_len * sizeof(int));
+	stack_b = (int *) malloc(array_len * sizeof(int));
+	if (!stack_b)
+		exit(write(1, "Error\n", 6) * 0);
+	//initialize_arrays(stack_a, stack_b, ++argv, &array_len);
+	//fill_stack(stack_a, argv, array_len);
+	//printf("%d",array_len);
+	printf("%s",argv[3]);
 }

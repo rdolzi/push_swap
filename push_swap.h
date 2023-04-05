@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/04 18:37:02 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/05 23:05:36 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include "Libft/libft.h"
 
 //SWAP
 void	sa(int *stack_a);
@@ -36,7 +38,8 @@ void	pa(int *stack_a, int *stack_b);
 void	pb(int *stack_a, int *stack_b);
 
 //UTILS
-int		ft_atoi(char *str);
-void	initialize_arrays(int *stack_a, char **argv, int len);
+void	fill_stack(int *stack_a, char **argv, int len);
+void	initialize_arrays(int *stack_a, int *stack_b, char **argv, int *len);
+char    **compute_input(int argc, char **argv);
 
 #endif
