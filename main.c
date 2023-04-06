@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/05 23:06:29 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 00:37:39 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,29 @@
 //come controllare che stack_b sia vuoto durante output, va fatto il free?
 //rename file initialize_arrays.c in initialize.c
 //gestione input (se len == 1 bisogna usare ft_split)
+//ARG="0 -1 2 -5 7"; ./push_swap $ARG
+//./push_swap "0 -1 2 -5 7"
+//leaks --atExit -- ./push_swap 0 -1 2 -5 7
+//come verificare che la string e'maggiore del max int?
+// il make non funziona sempre(make re si)
 int	main(int argc, char **argv)
 {
-	int	array_len;
 	int	*stack_a;
 	int	*stack_b;
-	
+
 	(void)argv;
 	if (argc == 1)
 	{
 		exit(0);
 	}
-	//array_len = argc - 1;
-	argv = compute_input(argc, argv);
-	stack_a = (int *) malloc(array_len * sizeof(int));
-	stack_b = (int *) malloc(array_len * sizeof(int));
-	if (!stack_b)
+	argv = compute_input(&argc, argv);
+	stack_a = (int *) malloc(argc * sizeof(int));
+	stack_b = (int *) malloc(argc * sizeof(int));
+	if (!stack_a || !stack_b)
 		exit(write(1, "Error\n", 6) * 0);
-	//initialize_arrays(stack_a, stack_b, ++argv, &array_len);
-	//fill_stack(stack_a, argv, array_len);
-	//printf("%d",array_len);
-	printf("%s",argv[3]);
+	fill_stack(stack_a, argv, argc);
+	//printf("%d",argc);
+	//printf(">>%s",argv[0]);
+	test_print_stack(stack_a, argc);
 }
+

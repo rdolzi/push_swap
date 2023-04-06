@@ -6,11 +6,12 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/05 15:50:29 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 00:32:26 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 void	initialize_arrays(int *stack_a, int *stack_b, char **argv, int *len)
 {
@@ -23,12 +24,9 @@ void	initialize_arrays(int *stack_a, int *stack_b, char **argv, int *len)
 void	fill_stack(int *stack_a, char **argv, int len)
 {
 	int	i;
-	(void)argv;
-	(void)stack_a;
-	i = 0;
-	while (i < len)
-	{
-		i++;
-		//stack_a = ft_atoi((*argv)++);
-	}
+
+	i = -1;
+	while (++i < len)
+		stack_a[i] = ft_atoi( argv[i]);
 }
+ 
