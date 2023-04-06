@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/06 23:24:10 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 01:13:13 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "Libft/libft.h"
+
+typedef struct s_stack{
+	int	*array;
+	int	size;
+}	t_stack;
 
 //SWAP
 void	sa(int *stack_a);
@@ -39,10 +44,10 @@ void	pb(int *stack_a, int *stack_b);
 
 //UTILS
 void	fill_stack(int *stack_a, char **argv, int len);
-void	initialize_arrays(int *stack_a, int *stack_b, char **argv, int *len);
+void	initialize_stack(t_stack *stack, int *len);
 char	**compute_input(int *argc, char **argv);
 
 //TEST
-void	test_print_stack(int *stack, int argc);
+void	test_print_stack(t_stack *stack);
 
 #endif

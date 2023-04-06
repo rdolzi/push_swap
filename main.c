@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 00:37:39 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 01:15:02 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@
 // il make non funziona sempre(make re si)
 int	main(int argc, char **argv)
 {
-	int	*stack_a;
-	int	*stack_b;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
 	(void)argv;
 	if (argc == 1)
@@ -70,13 +70,9 @@ int	main(int argc, char **argv)
 		exit(0);
 	}
 	argv = compute_input(&argc, argv);
-	stack_a = (int *) malloc(argc * sizeof(int));
-	stack_b = (int *) malloc(argc * sizeof(int));
-	if (!stack_a || !stack_b)
-		exit(write(1, "Error\n", 6) * 0);
-	fill_stack(stack_a, argv, argc);
-	//printf("%d",argc);
-	//printf(">>%s",argv[0]);
-	test_print_stack(stack_a, argc);
+	initialize_stack(&stack_a, &argc);
+	initialize_stack(&stack_b, &argc);
+	fill_stack(stack_a.array, argv, argc);
+	//test_print_stack(&stack_a);
 }
 
