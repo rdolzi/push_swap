@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:05:30 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 01:40:18 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 05:26:04 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	sa(t_stack *stack_a)
 	temp = stack_a->array[0];
 	stack_a->array[0] = stack_a->array[1];
 	stack_a->array[1] = temp;
+	write(1, "sa\n", 3);
 }
 
 // sb (swap b): 
@@ -38,6 +39,7 @@ void	sb(t_stack *stack_b)
 	temp = stack_b->array[0];
 	stack_b->array[0] = stack_b->array[1];
 	stack_b->array[1] = temp;
+	write(1, "sb\n", 3);
 }
 
 // ss : sa and sb at the same time.
@@ -45,6 +47,7 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
+	write(1, "ss\n", 3);
 }
 
 void	test_swap(t_stack *stack_a, t_stack *stack_b)

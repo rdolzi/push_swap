@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:16:51 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 04:05:04 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 05:26:22 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	rra(t_stack *st_a)
 	while (--i > 0)
 		st_a->array[i] = st_a->array[i - 1];
 	st_a->array[0] = temp;
+	write(1, "rra\n", 4);
 }
 
 // rrb (reverse rotate b): 
@@ -40,6 +41,7 @@ void	rrb(t_stack *st_b)
 	while (--i > 0)
 		st_b->array[i] = st_b->array[i - 1];
 	st_b->array[0] = temp;
+	write(1, "rrb\n", 4);
 }
 
 // rrr : rra and rrb at the same time.
@@ -47,6 +49,7 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
+	write(1, "rrr\n", 4);
 }
 
 void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b)

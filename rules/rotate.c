@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:11:51 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 04:04:14 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 05:26:15 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ra(t_stack *st_a)
 	while (++i < st_a->size)
 		st_a->array[i] = st_a->array[i + 1];
 	st_a->array[st_a->size - 1] = temp;
+	write(1, "ra\n", 3);
 }
 
 // rb (rotate b): 
@@ -40,6 +41,7 @@ void	rb(t_stack *st_b)
 	while (++i < st_b->size)
 		st_b->array[i] = st_b->array[i + 1];
 	st_b->array[st_b->size - 1] = temp;
+	write(1, "rb\n", 3);
 }
 
 // rr : ra and rb at the same time.
@@ -47,6 +49,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	ra(stack_a);
 	rb(stack_b);
+	write(1, "rr\n", 3);
 }
 
 void	test_rotate(t_stack *stack_a, t_stack *stack_b)
