@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 01:15:02 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 03:25:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
 	fill_stack(stack_a.array, argv, argc);
+	//to test stack_b
+	fill_stack(stack_b.array, argv, argc);
+	//test_swap(&stack_a, &stack_b);
 	//test_print_stack(&stack_a);
+	//test_rotate(&stack_a, &stack_b);
 }
-

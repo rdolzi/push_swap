@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 01:13:13 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 03:14:27 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ typedef struct s_stack{
 }	t_stack;
 
 //SWAP
-void	sa(int *stack_a);
-void	sb(int *stack_b);
-void	ss(int *stack_a, int *stack_b);
+void	sa(t_stack *stack_a);
+void	sb(t_stack *stack_b);
+void	ss(t_stack *stack_a, t_stack *stack_b);
 
 //ROTATE
-void	ra(int *stack_a);
-void	rb(int *stack_b);
-void	rr(int *stack_a, int *stack_b);
+void	ra(t_stack *stack_a);
+void	rb(t_stack *stack_b);
+void	rr(t_stack *stack_a, t_stack *stack_b);
 
 //REVERSE_ROTATE
-void	rra(int *stack_a);
-void	rrb(int *stack_b);
-void	rrr(int *stack_a, int *stack_b);
+void	rra(t_stack *stack_a);
+void	rrb(t_stack *stack_b);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 //PUSH
-void	pa(int *stack_a, int *stack_b);
-void	pb(int *stack_a, int *stack_b);
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_a, t_stack *stack_b);
 
 //UTILS
 void	fill_stack(int *stack_a, char **argv, int len);
@@ -49,5 +49,6 @@ char	**compute_input(int *argc, char **argv);
 
 //TEST
 void	test_print_stack(t_stack *stack);
-
+void	test_swap(t_stack *stack_a, t_stack *stack_b);
+void	test_rotate(t_stack *stack_a, t_stack *stack_b);
 #endif
