@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 16:51:33 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 17:54:10 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 //rename file initialize_arrays.c in initialize.c
 //gestione input (se len == 1 bisogna usare ft_split)
 //ARG="0 -1 2 -5 7"; ./push_swap $ARG
-//./push_swap "0 -1 2 -5 7"
+//ç
 //leaks --atExit -- ./push_swap 0 -1 2 -5 7
 //come verificare che la string e'maggiore del max int?
 // il make non funziona sempre(make re si)
@@ -86,5 +86,5 @@ int	main(int argc, char **argv)
 	//test_print_stack(&stack_a);
 	//test_rotate(&stack_a, &stack_b);
 	//test_reverse_rotate(&stack_a, &stack_b);
-	test_push(&stack_a, &stack_b);
+	//test_push(&stack_a, &stack_b);
 }
