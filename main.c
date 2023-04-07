@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 03:25:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 04:06:03 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ int	main(int argc, char **argv)
 	//test_swap(&stack_a, &stack_b);
 	//test_print_stack(&stack_a);
 	//test_rotate(&stack_a, &stack_b);
+	test_reverse_rotate(&stack_a, &stack_b);
 }

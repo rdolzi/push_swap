@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 03:14:27 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 04:05:16 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 
 //UTILS
-void	fill_stack(int *stack_a, char **argv, int len);
-void	initialize_stack(t_stack *stack, int *len);
 char	**compute_input(int *argc, char **argv);
+void	initialize_stack(t_stack *stack, int *len);
+void	fill_stack(int *stack_a, char **argv, int len);
 
 //TEST
 void	test_print_stack(t_stack *stack);
 void	test_swap(t_stack *stack_a, t_stack *stack_b);
 void	test_rotate(t_stack *stack_a, t_stack *stack_b);
+void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 #endif
