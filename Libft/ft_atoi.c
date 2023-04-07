@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:12:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 00:32:55 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 18:23:56 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (str[i] && (str[i] == '-' || str[i] == '+'))
+	if (str[i] && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i++] == '-')
 			sign *= -1;

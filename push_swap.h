@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 04:54:05 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/08 01:11:48 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	pb(t_stack *stack_a, t_stack *stack_b);
 char	**compute_input(int *argc, char **argv);
 void	initialize_stack(t_stack *stack, int *len);
 void	fill_stack(int *stack_a, char **argv, int len);
+
+//ALGORITHM
+int		is_min(t_stack *stack, int num);
+int		is_max(t_stack *stack, int num);
+int		get_min_index(t_stack *stack);
+int		get_max_index(t_stack *stack);
+void	exit_program(t_stack *stack_a, t_stack *stack_b);
+void	solve_three(t_stack *stack_a, t_stack *stack_b);
 
 //TEST
 void	test_print_stack(t_stack *stack);

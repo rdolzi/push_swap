@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 17:54:10 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/08 01:38:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 //controllare validità messaggio argc == 1
 //rename file initialize_arrays.c in initialize.c
 //gestione input (se len == 1 bisogna usare ft_split)
-//ARG="0 -1 2 -5 7"; ./push_swap $ARG
+//ç
 //ç
 //leaks --atExit -- ./push_swap 0 -1 2 -5 7
 //come verificare che la string e'maggiore del max int?
@@ -62,20 +62,22 @@
 // fare la stampa delle size per verifica pa/pb
 // alla fine dell ordinamento fare il free di stack_a & stack_b
 // verifica max/min int > gestire atoi con long long
+// standar error?
 // limite mosse(per voto massimo scegliere il tier minore):
 // 1. 3   2-3  mosse 
 // 2. 5   8-12 mosse
 // 3. 100 700-900 mosse 
 // 4. 500 5500-7000 mosse 
+
+// Algoritmo
+//Check stack ordinato
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 
 	if (argc == 1)
-	{
 		exit(0);
-	}
 	argv = compute_input(&argc, argv);
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
@@ -83,8 +85,13 @@ int	main(int argc, char **argv)
 	//to test stack_b
 	fill_stack(stack_b.array, argv, argc);
 	//test_swap(&stack_a, &stack_b);
-	//test_print_stack(&stack_a);
+	test_print_stack(&stack_a);
+	solve_three(&stack_a, &stack_b);
+	printf("post solve3 stack_a\n");
+	test_print_stack(&stack_a);
 	//test_rotate(&stack_a, &stack_b);
 	//test_reverse_rotate(&stack_a, &stack_b);
 	//test_push(&stack_a, &stack_b);
+	// free(&stack_a);
+	// free(&stack_b);
 }
