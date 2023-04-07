@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 04:06:03 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 05:06:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@
 //leaks --atExit -- ./push_swap 0 -1 2 -5 7
 //come verificare che la string e'maggiore del max int?
 // il make non funziona sempre(make re si)
+// stampare l operazione svolta con \n
+// fare la stampa delle size per verifica pa/pb
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
@@ -78,5 +80,6 @@ int	main(int argc, char **argv)
 	//test_swap(&stack_a, &stack_b);
 	//test_print_stack(&stack_a);
 	//test_rotate(&stack_a, &stack_b);
-	test_reverse_rotate(&stack_a, &stack_b);
+	//test_reverse_rotate(&stack_a, &stack_b);
+	test_push(&stack_a, &stack_b);
 }
