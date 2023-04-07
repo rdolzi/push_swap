@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 05:06:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/07 16:51:33 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@
 
 
 //controllare validità messaggio argc == 1
-//come controllare che stack_b sia vuoto durante output, va fatto il free?
 //rename file initialize_arrays.c in initialize.c
 //gestione input (se len == 1 bisogna usare ft_split)
 //ARG="0 -1 2 -5 7"; ./push_swap $ARG
@@ -61,12 +60,18 @@
 // il make non funziona sempre(make re si)
 // stampare l operazione svolta con \n
 // fare la stampa delle size per verifica pa/pb
+// alla fine dell ordinamento fare il free di stack_a & stack_b
+// verifica max/min int > gestire atoi con long long
+// limite mosse(per voto massimo scegliere il tier minore):
+// 1. 3   2-3  mosse 
+// 2. 5   8-12 mosse
+// 3. 100 700-900 mosse 
+// 4. 500 5500-7000 mosse 
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	(void)argv;
 	if (argc == 1)
 	{
 		exit(0);
