@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 01:38:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/08 05:16:52 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,24 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
 	fill_stack(stack_a.array, argv, argc);
+	
 	//to test stack_b
-	fill_stack(stack_b.array, argv, argc);
+	//fill_stack(stack_b.array, argv, argc);
+	test_print_stack(&stack_a);
+
+	//solve_three(&stack_a);
+	//printf("post solve3 stack_a\n");
+	//test_print_stack(&stack_a);
+
+	// solve_four(&stack_a, &stack_b);
+	// printf("post solve4 stack_a\n");
+	// test_print_stack(&stack_a);
+
+	// solve_five(&stack_a, &stack_b);
+	// printf("post solve5 stack_a\n");
+	// test_print_stack(&stack_a);
+
 	//test_swap(&stack_a, &stack_b);
-	test_print_stack(&stack_a);
-	solve_three(&stack_a, &stack_b);
-	printf("post solve3 stack_a\n");
-	test_print_stack(&stack_a);
 	//test_rotate(&stack_a, &stack_b);
 	//test_reverse_rotate(&stack_a, &stack_b);
 	//test_push(&stack_a, &stack_b);
