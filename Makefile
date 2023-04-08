@@ -4,7 +4,7 @@ SRCS = main.c \
 	   ./rules/push.c ./rules/swap.c \
 	   ./rules/rotate.c ./rules/reverse_rotate.c \
 	   ./utils/utils.c ./utils/initialize_arrays.c \
-	   ./algorithm/algo_three.c ./algorithm/algo_utils.c \
+	   ./algorithm/simple_algo.c ./algorithm/algo_utils.c \
 
 FLAGS = 
 

@@ -1,44 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_three.c                                       :+:      :+:    :+:   */
+/*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:16:03 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 05:15:01 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/08 05:40:20 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// void	solve_three(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (i < stack_a->size)
-// 	{
-// 		if (is_min(stack_a->array, stack_a->array[i]))
-// 		{
-// 			i++;
-// 			if (!is_max(stack_a->array, stack_a->array[i]))
-// 				exit_program(stack_a, stack_b);
-// 			else
-// 			{
-// 				sa(stack_a);
-// 				ra(stack_a);
-// 			}
-// 		}
-// 		else
-// 		{
-// 			if (is_max(stack_a->array, stack_a->array[i]))
-// 			{
-				
-// 			}
-// 		}
-// 	}
-// }
 
 void	solve_three(t_stack *stack_a)
 {
@@ -100,14 +72,13 @@ void	solve_five(t_stack *stack_a, t_stack *stack_b)
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
-
-
-// void	sort_stack(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	if (stack_a->size == 3)
-// 		solve_three(stack_a);
-// 	if (stack_a->size == 3)
-// 		solve_four(stack_a, stack_b);
-// 	// if (stack_a->size == 3)
-// 	// 	solve_five(stack_a, stack_b);
-// }
+//S1+2
+void	simple_sort(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->size == 3)
+		solve_three(stack_a);
+	else if (stack_a->size == 4)
+		solve_four(stack_a, stack_b);
+	else if (stack_a->size == 5)
+		solve_five(stack_a, stack_b);
+}
