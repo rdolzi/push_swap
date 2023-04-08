@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:16:03 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 05:40:20 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/08 05:41:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	solve_five(t_stack *stack_a, t_stack *stack_b)
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
+
 //S1+2
 void	simple_sort(t_stack *stack_a, t_stack *stack_b)
 {
