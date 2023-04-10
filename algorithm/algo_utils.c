@@ -6,16 +6,16 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 02:44:27 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/09 18:33:47 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	is_min(t_stack *stack, int num)
+int is_min(t_stack *stack, int num)
 {
-	int	i;
-	int	min;
+	int i;
+	int min;
 
 	i = -1;
 	min = num;
@@ -27,10 +27,10 @@ int	is_min(t_stack *stack, int num)
 	return (1);
 }
 
-int	is_max(t_stack *stack, int num)
+int is_max(t_stack *stack, int num)
 {
-	int	i;
-	int	max;
+	int i;
+	int max;
 
 	i = -1;
 	max = num;
@@ -42,13 +42,14 @@ int	is_max(t_stack *stack, int num)
 	return (1);
 }
 
-int	get_min_index(t_stack *stack)
+int get_min_index(t_stack *stack)
 {
-	int	i;
-	int	min;
+	int i;
+	int min;
 
 	i = -1;
 	min = 0;
+	// printf("|%x|%p|", stack->size, stack->size);
 	while (++i < stack->size)
 	{
 		if (stack->array[i] < stack->array[min])
@@ -57,10 +58,10 @@ int	get_min_index(t_stack *stack)
 	return (min);
 }
 
-int	get_max_index(t_stack *stack)
+int get_max_index(t_stack *stack)
 {
-	int	i;
-	int	max;
+	int i;
+	int max;
 
 	i = -1;
 	max = 0;
@@ -77,11 +78,10 @@ int	get_max_index(t_stack *stack)
 // 	return (max - min);
 // }
 
-//in uscita fa il free degli stack
-void	exit_program(t_stack *stack_a, t_stack *stack_b)
+// in uscita fa il free degli stack
+void exit_program(t_stack *stack_a, t_stack *stack_b)
 {
-	//free(stack_a);
-	//free(stack_b);
-	exit(0);
+	free(stack_a->array);
+	free(stack_b->array);
+	// exit(0);
 }
-

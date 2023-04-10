@@ -6,59 +6,61 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 05:36:10 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/09 18:07:35 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "Libft/libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "Libft/libft.h"
 
-typedef struct s_stack{
-	int	*array;
-	int	size;
-}	t_stack;
+typedef struct s_stack
+{
+	int *array;
+	int size;
+} t_stack;
 
-//SWAP
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
+// SWAP
+void sa(t_stack *stack_a);
+void sb(t_stack *stack_b);
+void ss(t_stack *stack_a, t_stack *stack_b);
 
-//ROTATE
-void	ra(t_stack *stack_a);
-void	rb(t_stack *stack_b);
-void	rr(t_stack *stack_a, t_stack *stack_b);
+// ROTATE
+void ra(t_stack *stack_a);
+void rb(t_stack *stack_b);
+void rr(t_stack *stack_a, t_stack *stack_b);
 
-//REVERSE_ROTATE
-void	rra(t_stack *stack_a);
-void	rrb(t_stack *stack_b);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
+// REVERSE_ROTATE
+void rra(t_stack *stack_a);
+void rrb(t_stack *stack_b);
+void rrr(t_stack *stack_a, t_stack *stack_b);
 
-//PUSH
-void	pa(t_stack *stack_a, t_stack *stack_b);
-void	pb(t_stack *stack_a, t_stack *stack_b);
+// PUSH
+void pa(t_stack *stack_a, t_stack *stack_b);
+void pb(t_stack *stack_a, t_stack *stack_b);
 
-//UTILS
-char	**compute_input(int *argc, char **argv);
-void	initialize_stack(t_stack *stack, int *len);
-void	fill_stack(int *stack_a, char **argv, int len);
+// UTILS
+char **compute_input(int *argc, char **argv);
+void initialize_stack(t_stack *stack, int *len);
+void fill_stack(int *stack_a, char **argv, int len);
 
-//ALGORITHM
-int		is_min(t_stack *stack, int num);
-int		is_max(t_stack *stack, int num);
-int		get_min_index(t_stack *stack);
-int		get_max_index(t_stack *stack);
-void	exit_program(t_stack *stack_a, t_stack *stack_b);
-void	simple_sort(t_stack *stack_a, t_stack *stack_b);
+// ALGORITHM
+int is_min(t_stack *stack, int num);
+int is_max(t_stack *stack, int num);
+int get_min_index(t_stack *stack);
+int get_max_index(t_stack *stack);
+void exit_program(t_stack *stack_a, t_stack *stack_b);
+void simple_sort(t_stack *stack_a, t_stack *stack_b);
+void solve_three(t_stack *stack_a);
 
-//TEST
-void	test_print_stack(t_stack *stack);
-void	test_swap(t_stack *stack_a, t_stack *stack_b);
-void	test_rotate(t_stack *stack_a, t_stack *stack_b);
-void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
-void	test_push(t_stack *stack_a, t_stack *stack_b);
+// TEST
+void test_print_stack(t_stack *stack);
+void test_swap(t_stack *stack_a, t_stack *stack_b);
+void test_rotate(t_stack *stack_a, t_stack *stack_b);
+void test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
+void test_push(t_stack *stack_a, t_stack *stack_b);
 #endif

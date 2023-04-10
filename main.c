@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/08 05:38:29 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/09 19:06:11 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 //     it must display "Error" followed by a ’\n’ on the standard error.
 //     Errors include:
 //         A. some arguments aren’t integers
-//         B. some arguments are bigger than an integer 
+//         B. some arguments are bigger than an integer
 //         C. there are duplicates.
 
 // SUBJECT
 // You have 2 stacks named a and b.
 // • At the beginning:
-//     1. The stack a contains a random amount of negative 
+//     1. The stack a contains a random amount of negative
 //     and/or positive numbers which cannot be duplicated.
 //     2. The stack b is empty.
 // • The goal is to sort in ascending order numbers into stack a.
@@ -49,32 +49,32 @@
 // BONUS:
 // If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.   verificare che per empty si intende index zero null(?)
 
-
-//controllare validità messaggio argc == 1
-//rename file initialize_arrays.c in initialize.c
-//gestione input (se len == 1 bisogna usare ft_split)
-//ç
-//ç
-//leaks --atExit -- ./push_swap 0 -1 2 -5 7
-//come verificare che la string e'maggiore del max int?
-// il make non funziona sempre(make re si)
-// stampare l operazione svolta con \n
-// fare la stampa delle size per verifica pa/pb
-// alla fine dell ordinamento fare il free di stack_a & stack_b
-// verifica max/min int > gestire atoi con long long
-// standar error?
-// limite mosse(per voto massimo scegliere il tier minore):
-// 1. 3   2-3  mosse 
-// 2. 5   8-12 mosse
-// 3. 100 700-900 mosse 
-// 4. 500 5500-7000 mosse 
+// controllare validità messaggio argc == 1
+// rename file initialize_arrays.c in initialize.c
+// gestione input (se len == 1 bisogna usare ft_split)
+// ç
+// ç
+// leaks --atExit -- ./push_swap 0 -1 2 -5 7
+// come verificare che la string e'maggiore del max int?
+//  il make non funziona sempre(make re si)
+//  stampare l operazione svolta con \n
+//  fare la stampa delle size per verifica pa/pb
+//  alla fine dell ordinamento fare il free di stack_a & stack_b
+//  verifica max/min int > gestire atoi con long long
+//  standar error?
+//  limite mosse(per voto massimo scegliere il tier minore):
+//  1. 3   2-3  mosse
+//  2. 5   8-12 mosse
+//  3. 100 700-900 mosse
+//  4. 500 5500-7000 mosse
 
 // Algoritmo
-//Check stack ordinato
-int	main(int argc, char **argv)
+// Check stack ordinato
+// CHECK DUPLICATE!
+int main(int argc, char **argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_stack stack_a;
+	t_stack stack_b;
 
 	if (argc == 1)
 		exit(0);
@@ -82,28 +82,20 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
 	fill_stack(stack_a.array, argv, argc);
+	printf("init stack\n");
+	test_print_stack(&stack_a);
 	if (stack_a.size <= 5)
 	{
 		simple_sort(&stack_a, &stack_b);
 	}
-
-	//S3
-	printf("post solve3 stack_a\n");
+	printf("\npost solve%d stack_a\n", stack_a.size);
 	test_print_stack(&stack_a);
 
-	//S4
-	// printf("post solve4 stack_a\n");
-	// test_print_stack(&stack_a);
+	exit(0);
 
-	//S5
-	// printf("post solve5 stack_a\n");
-	// test_print_stack(&stack_a);
-	
-	//TEST RULES
-	//test_swap(&stack_a, &stack_b);
-	//test_rotate(&stack_a, &stack_b);
-	//test_reverse_rotate(&stack_a, &stack_b);
-	//test_push(&stack_a, &stack_b);
-	// free(&stack_a);
-	// free(&stack_b);
+	// TEST RULES
+	// test_swap(&stack_a, &stack_b);
+	// test_rotate(&stack_a, &stack_b);
+	// test_reverse_rotate(&stack_a, &stack_b);
+	// test_push(&stack_a, &stack_b);
 }
