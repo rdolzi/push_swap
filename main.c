@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/11 15:38:45 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/11 21:55:49 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 // Algoritmo
 // Check stack ordinato
 // CHECK DUPLICATE!
+// check limite 8 (5num) e copertura 100%casi
 int main(int argc, char **argv)
 {
 	t_stack stack_a;
@@ -86,8 +87,9 @@ int main(int argc, char **argv)
 	// test_print_stack(&stack_a);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
-	else
-		complex_sort(&stack_a, &stack_b); 
+	// else
+	// 	complex_sort(&stack_a, &stack_b); 
+	test_print_lis(&stack_a);
 	// printf("\npost solve%d stack_a\n", stack_a.size);
 	// test_print_stack(&stack_a);
 

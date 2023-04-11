@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/11 20:21:41 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/12 00:11:08 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,41 @@ t_stack	*get_sequence(t_stack *stack_a, int start_index)
 {
 	int		i;
 	int		j;
+	int		count;
 	t_stack	*stack;
 
-	i = 0;
+	count = stack_a->size;
+	i = start_index;
+	printf("\n>STARRT INDEX%d<\n",i);
 	j = 0;
 	stack = malloc(sizeof(stack));
 	if (!stack)
 		exit(1);
 	stack->array = malloc(stack_a->size * sizeof(int));
-	stack->array[i] = stack_a->array[i];
-	while (i < stack_a->size)
+	stack->array[0] = stack_a->array[i];
+	stack->size = 1;
+	printf("\n>stack->array[0]:%d<\n", stack->array[0]);
+	while (count > 0)
 	{
-		j = 0;
-		while (j < stack_a->size)
+		printf("\n>>j:%d||count:%d<<\n", j, count);
+		if (stack_a->array[j] > stack->array[i])
 		{
-			if (stack_a->array[j] > stack->array[i])
-				stack->array[i++] = stack_a->array[j++];
-			else
-				j++;
+			printf("\n>stack->array[%d]:%d<\n",i, stack_a->array[i]);
+			stack->array[++i] = stack_a->array[j];
+			if (j + 1 == stack_a->size)
+				j = 0;
+			stack->size++;
+			count--;
 		}
-		i++;
+		else
+		{
+			j++;
+			count--;
+		}
 	}
-	stack->size = i;
+	printf("--get_sequence--\n");
+	test_print_stack(stack);
+	printf("\n");
 	return (stack);
 }
 
@@ -56,18 +69,29 @@ t_stack	*lis(t_stack *stack_a)
 	t_stack	*b;
 
 	i = 0;
-	a = get_sequence(stack_a, 0);
+	a = get_sequence(stack_a, i);
+	printf("--STILL get_sequence--\n");
+	test_print_stack(a);
+	printf("\n");
 	while (++i < stack_a->size)
 	{
 		b = get_sequence(stack_a, i);
+		printf("--SHOULD BE NEXT ONE get_sequence--\n");
+		test_print_stack(b);
+		printf("\n");
 		if (b->size > a->size)
 		{
+			printf("\nIF>b->size:%d||a->size:%d \n",b->size, a->size);
 			a = b;
 			free(a->array);
 		}
 		else
 			free(b->array);
+		
+		printf("\nLIS:NEW MAX STACK(size:%d)\n",a->size);
+		test_print_stack(a);
 	}
+	return (a);
 }
 
 int get_min_index(t_stack *stack)
@@ -77,7 +101,6 @@ int get_min_index(t_stack *stack)
 
 	i = -1;
 	min = 0;
-	// printf("|%x|%p|", stack->size, stack->size);
 	while (++i < stack->size)
 	{
 		if (stack->array[i] < stack->array[min])
@@ -102,9 +125,15 @@ int get_max_index(t_stack *stack)
 }
 
 // in uscita fa il free degli stack
-void exit_program(t_stack *stack_a, t_stack *stack_b)
+void	exit_program(t_stack *stack_a, t_stack *stack_b)
 {
 	free(stack_a->array);
 	free(stack_b->array);
 	// exit(0);
+}
+
+void	test_print_lis(t_stack *stack_a)
+{
+	printf("\nLa lis maggiore e':\n");
+	test_print_stack(lis(stack_a));
 }
