@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/09 19:06:11 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:38:45 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ int main(int argc, char **argv)
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
 	fill_stack(stack_a.array, argv, argc);
-	printf("init stack\n");
-	test_print_stack(&stack_a);
+	// printf("init stack\n");
+	// test_print_stack(&stack_a);
 	if (stack_a.size <= 5)
-	{
 		simple_sort(&stack_a, &stack_b);
-	}
-	printf("\npost solve%d stack_a\n", stack_a.size);
-	test_print_stack(&stack_a);
+	else
+		complex_sort(&stack_a, &stack_b); 
+	// printf("\npost solve%d stack_a\n", stack_a.size);
+	// test_print_stack(&stack_a);
 
 	exit(0);
 

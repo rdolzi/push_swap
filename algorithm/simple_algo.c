@@ -6,23 +6,23 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:16:03 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/09 18:58:32 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/11 16:57:18 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void solve_two(t_stack *stack_a)
+void	solve_two(t_stack *stack_a)
 {
 	if (stack_a->array[0] > stack_a->array[1])
 		sa(stack_a);
 }
 
-void solve_three(t_stack *stack_a)
+void	solve_three(t_stack *stack_a)
 {
-	int min_index;
-	int max_index;
-	int distance;
+	int	min_index;
+	int	max_index;
+	int	distance;
 
 	min_index = get_min_index(stack_a);
 	max_index = get_max_index(stack_a);
@@ -38,9 +38,9 @@ void solve_three(t_stack *stack_a)
 		rra(stack_a);
 }
 
-void solve_four(t_stack *stack_a, t_stack *stack_b)
+void	solve_four(t_stack *stack_a, t_stack *stack_b)
 {
-	int min_index;
+	int	min_index;
 
 	min_index = get_min_index(stack_a);
 	if (min_index <= 2)
@@ -55,10 +55,10 @@ void solve_four(t_stack *stack_a, t_stack *stack_b)
 	pa(stack_a, stack_b);
 }
 
-void solve_five(t_stack *stack_a, t_stack *stack_b)
+void	solve_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	int min_index;
+	int	i;
+	int	min_index;
 
 	i = 2;
 	while (i-- > 0)
@@ -78,10 +78,10 @@ void solve_five(t_stack *stack_a, t_stack *stack_b)
 	pa(stack_a, stack_b);
 }
 
-void simple_sort(t_stack *stack_a, t_stack *stack_b)
+void	simple_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size == 1)
-		return;
+		return ;
 	// exit_program(stack_a, stack_b);
 	else if (stack_a->size == 2)
 		solve_two(stack_a);

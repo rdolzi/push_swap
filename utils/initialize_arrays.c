@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/09 18:33:35 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:30:43 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 
 void initialize_stack(t_stack *stack, int *len)
 {
-	// stack = malloc(sizeof(*stack));
-	// if (!stack)
-	// 	exit(write(1, "Error\n", 6));
 	stack->size = *len;
 	stack->array = malloc(stack->size * sizeof(int));
 	if (!stack->array)

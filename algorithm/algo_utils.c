@@ -6,40 +6,68 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/09 18:33:47 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:21:41 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int is_min(t_stack *stack, int num)
+//restituisce un array che contiene tutti gli elementi in ordine crescenti
+// dello stack_a partendo dal index indicato, size volte
+//N.B: Se index arriva alla fine ricomincia circolarmente dal primo 
+//il t_stack ritornato avra':
+// 1. dimensione dell array == stack_a
+// 2. size data dall effettiva lunghezza dell array;
+t_stack	*get_sequence(t_stack *stack_a, int start_index)
 {
-	int i;
-	int min;
+	int		i;
+	int		j;
+	t_stack	*stack;
 
-	i = -1;
-	min = num;
-	while (++i < stack->size)
+	i = 0;
+	j = 0;
+	stack = malloc(sizeof(stack));
+	if (!stack)
+		exit(1);
+	stack->array = malloc(stack_a->size * sizeof(int));
+	stack->array[i] = stack_a->array[i];
+	while (i < stack_a->size)
 	{
-		if (stack->array[i] < min)
-			return (0);
+		j = 0;
+		while (j < stack_a->size)
+		{
+			if (stack_a->array[j] > stack->array[i])
+				stack->array[i++] = stack_a->array[j++];
+			else
+				j++;
+		}
+		i++;
 	}
-	return (1);
+	stack->size = i;
+	return (stack);
 }
 
-int is_max(t_stack *stack, int num)
+//tra tutte le sequenze ritorna quella piu grande.
+//quindi le confronta due allavolta.
+t_stack	*lis(t_stack *stack_a)
 {
-	int i;
-	int max;
+	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
-	i = -1;
-	max = num;
-	while (++i < stack->size)
+	i = 0;
+	a = get_sequence(stack_a, 0);
+	while (++i < stack_a->size)
 	{
-		if (stack->array[i] > max)
-			return (0);
+		b = get_sequence(stack_a, i);
+		if (b->size > a->size)
+		{
+			a = b;
+			free(a->array);
+		}
+		else
+			free(b->array);
 	}
-	return (1);
 }
 
 int get_min_index(t_stack *stack)
@@ -72,11 +100,6 @@ int get_max_index(t_stack *stack)
 	}
 	return (max);
 }
-
-// int	get_index_distance(int min, int max)
-// {
-// 	return (max - min);
-// }
 
 // in uscita fa il free degli stack
 void exit_program(t_stack *stack_a, t_stack *stack_b)
