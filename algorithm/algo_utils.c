@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 15:01:25 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/12 15:06:53 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,14 @@ t_stack *lis(t_stack *stack_a)
 		if (b->size > a->size)
 		{
 			free(a->array);
+			free(a);
 			a = b;
 		}
 		else
+		{
 			free(b->array);
+			free(b);
+		}
 	}
 	return (a);
 }
@@ -126,6 +130,11 @@ void exit_program(t_stack *stack_a, t_stack *stack_b)
 
 void test_print_lis(t_stack *stack_a)
 {
+	t_stack *test;
+
+	test = lis(stack_a);
 	printf("\nLa lis maggiore e':\n");
-	test_print_stack(lis(stack_a));
+	test_print_stack(test);
+	free(test->array);
+	free(test);
 }
