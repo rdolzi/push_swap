@@ -6,13 +6,12 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 12:45:49 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/12 14:13:28 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 //./push_swap 11 7 3 6 5 10 -3 -2 -1
-// salta l ultimo al momento, da -3 -2 11
 // restituisce un array che contiene tutti gli elementi in ordine crescenti
 //  dello stack_a partendo dal index indicato, size volte
 // N.B: Se index arriva alla fine ricomincia circolarmente dal primo
@@ -40,17 +39,19 @@ t_stack *get_sequence(t_stack *stack_a, int start_index)
 	while (count > 0)
 	{
 		printf("\n>>j:%d||count:%d<<\n", j, count);
-		if (j + 1 == stack_a->size)
-			j = 0;
 		if (stack_a->array[j] > stack->array[i])
 		{
 			printf("IF get_sequence");
 			stack->array[++i] = stack_a->array[j];
+			if (j + 1 == stack_a->size)
+				j = 0;
 			stack->size++;
 			count--;
 		}
 		else
 		{
+			if (j + 1 == stack_a->size)
+				j = -1;
 			j++;
 			count--;
 		}
