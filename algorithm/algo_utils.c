@@ -6,45 +6,46 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 00:11:08 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:45:49 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-//restituisce un array che contiene tutti gli elementi in ordine crescenti
-// dello stack_a partendo dal index indicato, size volte
-//N.B: Se index arriva alla fine ricomincia circolarmente dal primo 
-//il t_stack ritornato avra':
-// 1. dimensione dell array == stack_a
-// 2. size data dall effettiva lunghezza dell array;
-t_stack	*get_sequence(t_stack *stack_a, int start_index)
+//./push_swap 11 7 3 6 5 10 -3 -2 -1
+// salta l ultimo al momento, da -3 -2 11
+// restituisce un array che contiene tutti gli elementi in ordine crescenti
+//  dello stack_a partendo dal index indicato, size volte
+// N.B: Se index arriva alla fine ricomincia circolarmente dal primo
+// il t_stack ritornato avra':
+//  1. dimensione dell array == stack_a
+//  2. size data dall effettiva lunghezza dell array;
+t_stack *get_sequence(t_stack *stack_a, int start_index)
 {
-	int		i;
-	int		j;
-	int		count;
-	t_stack	*stack;
+	int i;
+	int j;
+	int count;
+	t_stack *stack;
 
 	count = stack_a->size;
-	i = start_index;
-	printf("\n>STARRT INDEX%d<\n",i);
-	j = 0;
+	i = 0;
+	j = start_index;
+	printf("\n>STARRT INDEX%d<\n", j);
 	stack = malloc(sizeof(stack));
 	if (!stack)
 		exit(1);
 	stack->array = malloc(stack_a->size * sizeof(int));
-	stack->array[0] = stack_a->array[i];
+	stack->array[i] = stack_a->array[j];
 	stack->size = 1;
-	printf("\n>stack->array[0]:%d<\n", stack->array[0]);
+	printf("\n>:stack->array[0]:%d<\n", stack->array[0]);
 	while (count > 0)
 	{
 		printf("\n>>j:%d||count:%d<<\n", j, count);
+		if (j + 1 == stack_a->size)
+			j = 0;
 		if (stack_a->array[j] > stack->array[i])
 		{
-			printf("\n>stack->array[%d]:%d<\n",i, stack_a->array[i]);
+			printf("IF get_sequence");
 			stack->array[++i] = stack_a->array[j];
-			if (j + 1 == stack_a->size)
-				j = 0;
 			stack->size++;
 			count--;
 		}
@@ -54,19 +55,19 @@ t_stack	*get_sequence(t_stack *stack_a, int start_index)
 			count--;
 		}
 	}
-	printf("--get_sequence--\n");
+	printf("\n--get_sequence--\n");
 	test_print_stack(stack);
 	printf("\n");
 	return (stack);
 }
 
-//tra tutte le sequenze ritorna quella piu grande.
-//quindi le confronta due allavolta.
-t_stack	*lis(t_stack *stack_a)
+// tra tutte le sequenze ritorna quella piu grande.
+// quindi le confronta due allavolta.
+t_stack *lis(t_stack *stack_a)
 {
-	int		i;
-	t_stack	*a;
-	t_stack	*b;
+	int i;
+	t_stack *a;
+	t_stack *b;
 
 	i = 0;
 	a = get_sequence(stack_a, i);
@@ -76,19 +77,19 @@ t_stack	*lis(t_stack *stack_a)
 	while (++i < stack_a->size)
 	{
 		b = get_sequence(stack_a, i);
-		printf("--SHOULD BE NEXT ONE get_sequence--\n");
+		printf("--NEXT ONE get_sequence--\n");
 		test_print_stack(b);
 		printf("\n");
 		if (b->size > a->size)
 		{
-			printf("\nIF>b->size:%d||a->size:%d \n",b->size, a->size);
-			a = b;
 			free(a->array);
+			printf("\nIF>b->size:%d||a->size:%d \n", b->size, a->size);
+			a = b;
 		}
 		else
 			free(b->array);
-		
-		printf("\nLIS:NEW MAX STACK(size:%d)\n",a->size);
+
+		printf("\nLIS:NEW MAX STACK(size:%d)\n", a->size);
 		test_print_stack(a);
 	}
 	return (a);
@@ -125,15 +126,15 @@ int get_max_index(t_stack *stack)
 }
 
 // in uscita fa il free degli stack
-void	exit_program(t_stack *stack_a, t_stack *stack_b)
+void exit_program(t_stack *stack_a, t_stack *stack_b)
 {
 	free(stack_a->array);
 	free(stack_b->array);
 	// exit(0);
 }
 
-void	test_print_lis(t_stack *stack_a)
+void test_print_lis(t_stack *stack_a)
 {
 	printf("\nLa lis maggiore e':\n");
-	test_print_stack(lis(stack_a));
+	lis(stack_a);
 }
