@@ -6,18 +6,33 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 14:13:28 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/12 14:47:32 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-//./push_swap 11 7 3 6 5 10 -3 -2 -1
+//./push_swap -11 7 3 6 5 10 -3 -2 -1
 // restituisce un array che contiene tutti gli elementi in ordine crescenti
 //  dello stack_a partendo dal index indicato, size volte
 // N.B: Se index arriva alla fine ricomincia circolarmente dal primo
 // il t_stack ritornato avra':
 //  1. dimensione dell array == stack_a
 //  2. size data dall effettiva lunghezza dell array;
+
+t_stack *setup_stack(t_stack *stack_a, int start_index)
+{
+	t_stack *stack;
+
+	stack = malloc(sizeof(stack));
+	if (!stack)
+		exit(1);
+	stack->array = malloc(stack_a->size * sizeof(int));
+	if (!stack->array)
+		exit(1);
+	stack->array[0] = stack_a->array[start_index];
+	stack->size = 1;
+	return (stack);
+}
 t_stack *get_sequence(t_stack *stack_a, int start_index)
 {
 	int i;
@@ -28,13 +43,8 @@ t_stack *get_sequence(t_stack *stack_a, int start_index)
 	count = stack_a->size;
 	i = 0;
 	j = start_index;
+	stack = setup_stack(stack_a, start_index);
 	printf("\n>STARRT INDEX%d<\n", j);
-	stack = malloc(sizeof(stack));
-	if (!stack)
-		exit(1);
-	stack->array = malloc(stack_a->size * sizeof(int));
-	stack->array[i] = stack_a->array[j];
-	stack->size = 1;
 	printf("\n>:stack->array[0]:%d<\n", stack->array[0]);
 	while (count > 0)
 	{
@@ -42,7 +52,7 @@ t_stack *get_sequence(t_stack *stack_a, int start_index)
 		if (stack_a->array[j] > stack->array[i])
 		{
 			printf("IF get_sequence");
-			stack->array[++i] = stack_a->array[j];
+			stack->array[++i] = stack_a->array[j++];
 			if (j + 1 == stack_a->size)
 				j = 0;
 			stack->size++;
