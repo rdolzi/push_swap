@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/14 00:13:10 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/14 00:30:19 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		else
 			ra(stack_a);
 	}
+	free(lis->array);
 }
 
 //./push_swap -11 7 3 6 5 10 -3 -2 -1
@@ -62,7 +63,7 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 //  2. size data dall effettiva lunghezza dell array;
 t_stack	*setup_stack(t_stack *stack_a, int start_index)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = malloc(sizeof(stack));
 	if (!stack)
@@ -77,9 +78,9 @@ t_stack	*setup_stack(t_stack *stack_a, int start_index)
 
 t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
 {
-	int i;
-	int j;
-	t_stack *stack;
+	int		i;
+	int		j;
+	t_stack	*stack;
 
 	i = 0;
 	j = start_index;
@@ -105,11 +106,11 @@ t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
 
 // tra tutte le sequenze ritorna quella piu grande.
 // quindi le confronta due allavolta.
-t_stack *lis(t_stack *stack_a)
+void	lis(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	t_stack *a;
-	t_stack *b;
+	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);
@@ -128,14 +129,13 @@ t_stack *lis(t_stack *stack_a)
 			free(b);
 		}
 	}
-	return (a);
+	printf("\n--lis--\n");
+	test_print_stack(a);
+	push_lis(stack_a, stack_b, a);
 }
 
-void test_print_lis(t_stack *stack_a)
+void	test_print_lis(t_stack *stack_a)
 {
-	t_stack *test;
-
-	test = lis(stack_a);
 	printf("\nLa lis maggiore e':\n");
 	test_print_stack(test);
 	free(test->array);
