@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/14 00:30:19 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/14 00:32:38 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,12 +132,4 @@ void	lis(t_stack *stack_a, t_stack *stack_b)
 	printf("\n--lis--\n");
 	test_print_stack(a);
 	push_lis(stack_a, stack_b, a);
-}
-
-void	test_print_lis(t_stack *stack_a)
-{
-	printf("\nLa lis maggiore e':\n");
-	test_print_stack(test);
-	free(test->array);
-	free(test);
 }

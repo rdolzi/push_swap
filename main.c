@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 15:39:15 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/14 00:34:41 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 // gestione input (se len == 1 bisogna usare ft_split)
 // ç
 // ç
-// leaks --atExit -- ./push_swap 0 -1 2 -5 7
+// leaks --atExit -- ./push_swap 0 -1 2 -5 7  ./push_swap -11 7 3 6 5 10 -3 -2 -1
 // come verificare che la string e'maggiore del max int?
 //  il make non funziona sempre(make re si)
 //  stampare l operazione svolta con \n
@@ -87,9 +87,8 @@ int main(int argc, char **argv)
 	// test_print_stack(&stack_a);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
-	// else
-	// 	complex_sort(&stack_a, &stack_b);
-	test_print_lis(&stack_a);
+	else
+		complex_sort(&stack_a, &stack_b);
 	// printf("\npost solve%d stack_a\n", stack_a.size);
 	// test_print_stack(&stack_a);
 

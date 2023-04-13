@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/14 00:26:31 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/14 00:32:47 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,4 @@ void	test_swap(t_stack *stack_a, t_stack *stack_b);
 void	test_rotate(t_stack *stack_a, t_stack *stack_b);
 void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 void	test_push(t_stack *stack_a, t_stack *stack_b);
-void	test_print_lis(t_stack *stack_a);
 #endif
