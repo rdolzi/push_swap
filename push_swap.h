@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/12 14:54:54 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/13 19:20:28 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void solve_three(t_stack *stack_a);
 void simple_sort(t_stack *stack_a, t_stack *stack_b);
 void complex_sort(t_stack *stack_a, t_stack *stack_b);
 t_stack *lis(t_stack *stack_a);
-t_stack *get_sequence(t_stack *stack_a, int count, int start_index);
 
 // TEST
 void test_print_stack(t_stack *stack);
