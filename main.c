@@ -82,16 +82,12 @@ int main(int argc, char **argv)
 	argv = compute_input(&argc, argv);
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
+	stack_b.size = 0; // chiedere
 	fill_stack(stack_a.array, argv, argc);
-	// printf("init stack\n");
-	// test_print_stack(&stack_a);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
 	else
 		complex_sort(&stack_a, &stack_b);
-	// printf("\npost solve%d stack_a\n", stack_a.size);
-	// test_print_stack(&stack_a);
-
 	exit(0);
 
 	// TEST RULES

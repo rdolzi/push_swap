@@ -18,13 +18,15 @@ int	is_in_lis(int nb, t_stack *lis)
 	int	i;
 	int	len;
 
-	i = 0;
+	i = -1;
 	len = lis->size;
-	while (i++ < len)
+	while (++i < len)
 	{
+		//printf("lis->array[i]:%d|nb:%d\n", lis->array[i], nb);
 		if (lis->array[i] == nb)
 			return (1);
 	}
+	// printf("KO");
 	return (0);
 }
 
@@ -33,23 +35,47 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 {
 	int	len;
 
-	len = stack_a->size - stack_b->size;
-	while (len-- > 0)
+	len = stack_a->size - lis->size;
+	printf("\n stack_a->size:%d, lis->size:%d\n", stack_a->size, lis->size);
+	printf("len:%d (elem to move)\n", len);
+	while (len-- >= 0)
 	{
+		printf("\nstack_a->size:%d\n", stack_a->size);
 		if (!is_in_lis(stack_a->array[0], lis))
+		{
+			printf("stack_a->array[0]:%d",stack_a->array[0]);
+			printf("AAA!");
 			pb(stack_a, stack_b);
+			printf("\n--,stack_a--\n");
+			test_print_stack(stack_a);
+			printf("\n--,stack_b--\n");
+			test_print_stack(stack_b);
+		}//./push_swap 11 7 3 -6 5 10 -3 -2
 		else if (!is_in_lis(stack_a->array[1], lis))
 		{
+			printf("BBB!");
 			ra(stack_a);
 			pb(stack_a, stack_b);
+			printf("\n--,stack_a--\n");
+			test_print_stack(stack_a);
+			printf("\n--,stack_b--\n");
+			test_print_stack(stack_b);
 		}
-		else if (!is_in_lis(stack_a->array[stack_a->size], lis))
+		else if (!is_in_lis(stack_a->array[stack_a->size - 1], lis))
 		{
+			printf("CCC!");
 			rra(stack_a);
 			pb(stack_a, stack_b);
+			printf("\n--,stack_a--\n");
+			test_print_stack(stack_a);
+			printf("\n--,stack_b--\n");
+			test_print_stack(stack_b);
 		}
 		else
+		{
+			printf("DDD!");
 			ra(stack_a);
+		}
 	}
 	free(lis->array);
 }
@@ -122,14 +148,10 @@ void	lis(t_stack *stack_a, t_stack *stack_b)
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);
 	printf("--STILL get_sequence--\n");
-	test_print_stack(a);
-	printf("\n");
 	while (++i < stack_a->size)
 	{
 		b = get_sequence(stack_a, stack_a->size, i);
 		printf("--NEXT ONE get_sequence--\n");
-		test_print_stack(b);
-		printf("\n");
 		if (b->size > a->size)
 		{
 			free(a->array);

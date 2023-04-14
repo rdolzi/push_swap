@@ -51,6 +51,7 @@ void	solve_four(t_stack *stack_a, t_stack *stack_b)
 	else
 		rra(stack_a);
 	pb(stack_a, stack_b);
+	test_print_stack(stack_b);
 	solve_three(stack_a);
 	pa(stack_a, stack_b);
 }

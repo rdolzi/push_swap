@@ -12,13 +12,16 @@
 
 #include "../push_swap.h"
 
+//  ./push_swap 11 7 3 -6 5 10 -3 -2  bug 
 void	complex_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*lis_stack;
-
-	lis(stack_a, stack_a);
-	printf("\n--stack_a--\n");
+	printf("\n--PREstack_a(SIZE:%d)--\n",stack_a->size);
 	test_print_stack(stack_a);
-	printf("\n--stack_b--\n");
+	printf("\n--PREstack_b(SIZE:%d)--\n",stack_b->size);
+	test_print_stack(stack_b);
+	lis(stack_a, stack_b);
+	printf("\n--POSTstack_a(SIZE:%d)--\n",stack_a->size);
+	test_print_stack(stack_a);
+	printf("\n--POSTstack_b(SIZE:%d)--\n",stack_b->size);
 	test_print_stack(stack_b);
 }
