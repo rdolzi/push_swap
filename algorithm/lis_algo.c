@@ -6,23 +6,23 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/14 00:32:38 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/15 16:39:34 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-//controlla se il numero e' presente il lis
-int	is_in_lis(int nb, t_stack *lis)
+// controlla se il numero e' presente il lis
+int is_in_lis(int nb, t_stack *lis)
 {
-	int	i;
-	int	len;
+	int i;
+	int len;
 
 	i = -1;
 	len = lis->size;
 	while (++i < len)
 	{
-		//printf("lis->array[i]:%d|nb:%d\n", lis->array[i], nb);
+		// printf("lis->array[i]:%d|nb:%d\n", lis->array[i], nb);
 		if (lis->array[i] == nb)
 			return (1);
 	}
@@ -30,10 +30,10 @@ int	is_in_lis(int nb, t_stack *lis)
 	return (0);
 }
 
-//Push elementi di STACK_A, non presenti in LIS, in STACK_B.
-void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
+// Push elementi di STACK_A, non presenti in LIS, in STACK_B.
+void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 {
-	int	len;
+	int len;
 
 	len = stack_a->size - lis->size;
 	printf("\n stack_a->size:%d, lis->size:%d\n", stack_a->size, lis->size);
@@ -43,14 +43,14 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		printf("\nstack_a->size:%d\n", stack_a->size);
 		if (!is_in_lis(stack_a->array[0], lis))
 		{
-			printf("stack_a->array[0]:%d",stack_a->array[0]);
+			printf("stack_a->array[0]:%d", stack_a->array[0]);
 			printf("AAA!");
 			pb(stack_a, stack_b);
 			printf("\n--,stack_a--\n");
 			test_print_stack(stack_a);
 			printf("\n--,stack_b--\n");
 			test_print_stack(stack_b);
-		}//./push_swap 11 7 3 -6 5 10 -3 -2
+		} //./push_swap 11 7 3 -6 5 10 -3 -2
 		else if (!is_in_lis(stack_a->array[1], lis))
 		{
 			printf("BBB!");
@@ -74,7 +74,7 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		else
 		{
 			printf("DDD!");
-			ra(stack_a);
+			ra(stack_a); // per ottimizzare usare anche rra
 		}
 	}
 	free(lis->array);
@@ -87,9 +87,9 @@ void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 // il t_stack ritornato avra':
 //  1. dimensione dell array == stack_a
 //  2. size data dall effettiva lunghezza dell array;
-t_stack	*setup_stack(t_stack *stack_a, int start_index)
+t_stack *setup_stack(t_stack *stack_a, int start_index)
 {
-	t_stack	*stack;
+	t_stack *stack;
 
 	stack = malloc(sizeof(stack));
 	if (!stack)
@@ -102,11 +102,11 @@ t_stack	*setup_stack(t_stack *stack_a, int start_index)
 	return (stack);
 }
 
-t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
+t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
 {
-	int		i;
-	int		j;
-	t_stack	*stack;
+	int i;
+	int j;
+	t_stack *stack;
 
 	i = 0;
 	j = start_index;
@@ -118,12 +118,12 @@ t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
 		printf("\n>>j:%d||count:%d<<\n", j, count);
 		if (stack_a->array[j] > stack->array[i])
 		{
-			printf("IF get_sequence|i:%d,j:%d stack_a->array[j]>%d, stack->array[i]%d",i,j, stack_a->array[j], stack->array[i]);
+			printf("IF get_sequence|i:%d,j:%d stack_a->array[j]>%d, stack->array[i]%d", i, j, stack_a->array[j], stack->array[i]);
 			stack->array[++i] = stack_a->array[j++];
 			stack->size++;
 			if (j == stack_a->size)
 				j = 0;
-		} 
+		}
 		else
 		{
 			if (j + 1 == stack_a->size)
@@ -139,11 +139,11 @@ t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
 
 // tra tutte le sequenze ritorna quella piu grande.
 // quindi le confronta due allavolta.
-void	lis(t_stack *stack_a, t_stack *stack_b)
+void lis(t_stack *stack_a, t_stack *stack_b)
 {
-	int		i;
-	t_stack	*a;
-	t_stack	*b;
+	int i;
+	t_stack *a;
+	t_stack *b;
 
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);
