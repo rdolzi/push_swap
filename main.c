@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/14 00:34:41 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/16 15:51:25 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int main(int argc, char **argv)
 	fill_stack(stack_a.array, argv, argc);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
-	else
-		complex_sort(&stack_a, &stack_b);
+	// else
+	// 	complex_sort(&stack_a, &stack_b);
 	exit(0);
 
 	// TEST RULES

@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/15 16:01:13 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/15 20:51:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 	test_print_stack(stack_a);
 	printf("\n--POSTstack_b(SIZE:%d)--\n", stack_b->size);
 	test_print_stack(stack_b);
+	calculate_moves(stack_a, stack_b);
 }

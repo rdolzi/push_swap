@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:50:10 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/15 17:01:45 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/15 21:32:49 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,60 @@
 //       2. Trovare elemento con valore più basso.
 //       3. Muovere in B[0] tale elemento
 //       4. Ruotare A && pa(B)
+
+int moves_a(t_stack *stack_a, int nbr)
+{
+	int i;
+	int moves;
+
+	i = -1;
+	moves = 0;
+	while (++i < stack_a->size)
+	{
+		printf("\nnbr:%d|array[i]:%d|array[size-1]:%d\n", nbr, stack_a->array[i], stack_a->array[stack_a->size - i]);
+		if (nbr < stack_a->array[i] && nbr > stack_a->array[stack_a->size - 1])
+			break;
+		// if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
+		// 	break;
+		moves++;
+	}
+	return (moves);
+}
+
+int moves_b(int index, int size)
+{
+	int moves;
+
+	moves = 0;
+	printf("size:%d|index:%d", size, index);
+	if (index > size / 2)
+		moves += size - index;
+	else
+		moves += index;
+	return (moves);
+}
+
+t_stack *calculate_moves(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	int m_a;
+	int m_b;
+	t_stack *moves;
+
+	m_a = 0;
+	m_b = 0;
+	i = -1;
+	moves = malloc(sizeof(*moves));
+	moves->array = malloc(stack_b->size * sizeof(int));
+	moves->size = stack_b->size;
+	while (++i < moves->size)
+	{
+		m_a = moves_a(stack_a, stack_b->array[i]);
+		m_b = moves_b(i, stack_b->size);
+		printf("\nmoves_a:%d |moves_b:%d\n", m_a, m_b);
+		moves->array[i] = m_a + m_b;
+	}
+	printf("\n--moves--\n");
+	test_print_stack(moves);
+	return (moves);
+}
