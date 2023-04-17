@@ -51,6 +51,7 @@
 //       3. Muovere in B[0] tale elemento
 //       4. Ruotare A && pa(B)
 
+
 int moves_a(t_stack *stack_a, int nbr)
 {
 	int i;
@@ -60,12 +61,15 @@ int moves_a(t_stack *stack_a, int nbr)
 	moves = 0;
 	while (++i < stack_a->size)
 	{
-		printf("\nnbr:%d|array[i]:%d|array[size-1]:%d\n", nbr, stack_a->array[i], stack_a->array[stack_a->size - i]);
-		if (nbr < stack_a->array[i] && nbr > stack_a->array[stack_a->size - 1])
+		//printf("\nnbr:%d|array[i]:%d|array[i + 1]:%d\n", nbr, stack_a->array[i], stack_a->array[i + 1]);
+		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
+		{
+			if ( i > stack_a->size / 2)
+				moves += stack_a->size - i - 1;
+			else
+				moves += i + 1;
 			break;
-		// if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
-		// 	break;
-		moves++;
+		}
 	}
 	return (moves);
 }

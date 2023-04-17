@@ -82,12 +82,12 @@ int main(int argc, char **argv)
 	argv = compute_input(&argc, argv);
 	initialize_stack(&stack_a, &argc);
 	initialize_stack(&stack_b, &argc);
-	stack_b.size = 0; // chiedere
+	stack_b.size = 0;
 	fill_stack(stack_a.array, argv, argc);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
-	// else
-	// 	complex_sort(&stack_a, &stack_b);
+	else
+		complex_sort(&stack_a, &stack_b);
 	exit(0);
 
 	// TEST RULES
