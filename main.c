@@ -53,7 +53,7 @@
 // rename file initialize_arrays.c in initialize.c
 // gestione input (se len == 1 bisogna usare ft_split)
 // ç
-// ç
+// ./push_swap -11 7 3 6 5 10 -3 -2 -10 -6 9 1 4
 // leaks --atExit -- ./push_swap 0 -1 2 -5 7  ./push_swap -11 7 3 6 5 10 -3 -2 -1
 // come verificare che la string e'maggiore del max int?
 //  il make non funziona sempre(make re si)

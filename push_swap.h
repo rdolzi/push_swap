@@ -56,7 +56,8 @@ void solve_three(t_stack *stack_a);
 void simple_sort(t_stack *stack_a, t_stack *stack_b);
 void complex_sort(t_stack *stack_a, t_stack *stack_b);
 void lis(t_stack *stack_a, t_stack *stack_b);
-t_stack *calculate_moves(t_stack *stack_a, t_stack *stack_b);
+int		calculate_moves(t_stack *stack_a, t_stack *stack_b);
+int 	moves_a(t_stack *stack_a, int nbr);
 
 // TEST
 void test_print_stack(t_stack *stack);

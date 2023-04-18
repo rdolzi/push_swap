@@ -51,7 +51,7 @@
 //       3. Muovere in B[0] tale elemento
 //       4. Ruotare A && pa(B)
 
-
+//./push_swap 12 8 -3 -5 20 1 16 2 5 -1 13 14 9 0 10 15 18 17 11 7
 int moves_a(t_stack *stack_a, int nbr)
 {
 	int i;
@@ -61,14 +61,29 @@ int moves_a(t_stack *stack_a, int nbr)
 	moves = 0;
 	while (++i < stack_a->size)
 	{
-		//printf("\nnbr:%d|array[i]:%d|array[i + 1]:%d\n", nbr, stack_a->array[i], stack_a->array[i + 1]);
+		printf("array[%d]:%d", i, stack_a->array[i]);
+		//printf("nbr:%d|array[i]:%d|array[i + 1]:%d\n", nbr, stack_a->array[i], stack_a->array[i + 1]);
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
+			printf("XXX");
 			if ( i > stack_a->size / 2)
-				moves += stack_a->size - i - 1;
+				moves = stack_a->size - i - 1;
 			else
-				moves += i + 1;
+				moves = i + 1;
 			break;
+		}
+		else
+		{
+			if (nbr < stack_a->array[i] && nbr < stack_a->array[i + 1] && stack_a->array[i] > stack_a->array[i + 1])
+			{
+				printf("YYY");
+				if ( i > stack_a->size / 2)
+					moves = stack_a->size - i - 1;
+				else
+					moves = i + 1;
+				break;
+			}
+
 		}
 	}
 	return (moves);
@@ -79,7 +94,7 @@ int moves_b(int index, int size)
 	int moves;
 
 	moves = 0;
-	printf("size:%d|index:%d", size, index);
+	//printf("size(b):%d|index:%d", size, index);
 	if (index > size / 2)
 		moves += size - index;
 	else
@@ -87,27 +102,39 @@ int moves_b(int index, int size)
 	return (moves);
 }
 
-t_stack *calculate_moves(t_stack *stack_a, t_stack *stack_b)
+// ritorna l index dell elemento in stack_b che richiede meno mosse
+int	calculate_moves(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
 	int m_a;
 	int m_b;
-	t_stack *moves;
+	int	to_move;
+	// t_stack *moves;
+	int	moves[stack_b->size];
 
 	m_a = 0;
 	m_b = 0;
 	i = -1;
-	moves = malloc(sizeof(*moves));
-	moves->array = malloc(stack_b->size * sizeof(int));
-	moves->size = stack_b->size;
-	while (++i < moves->size)
+	// moves = malloc(sizeof(*moves));
+	// moves->array = malloc(stack_b->size * sizeof(int));
+	// moves->size = stack_b->size;
+	while (++i < stack_b->size)
 	{
 		m_a = moves_a(stack_a, stack_b->array[i]);
 		m_b = moves_b(i, stack_b->size);
 		printf("\nmoves_a:%d |moves_b:%d\n", m_a, m_b);
-		moves->array[i] = m_a + m_b;
+		moves[i] = m_a + m_b;
 	}
+	i = -1;
+	to_move = 0;
 	printf("\n--moves--\n");
-	test_print_stack(moves);
-	return (moves);
+	while (++i < stack_b->size)
+	{
+		if (moves[i] < to_move)
+			to_move = i;
+		printf("moves[%d]:%d\n", i, moves[i]);
+	}
+	printf("\nmin index:%d\n", to_move);
+	//test_print_stack(moves);
+	return (to_move);
 }
