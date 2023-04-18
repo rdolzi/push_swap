@@ -57,6 +57,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 		//z./push_swap 6 2 1 3 4 5
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
+			printf("xxx");
 			if ( i > stack_a->size / 2)
 			{
 				moves = stack_a->size - i - 1;
@@ -73,9 +74,10 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 		}
 		else
 		{
-			if (stack_a->array[i] > stack_a->array[i + 1] && stack_a->array[i] > nbr)
+			if (nbr < stack_a->array[i] && nbr < stack_a->array[i + 1] && stack_a->array[i] > stack_a->array[i + 1])
 			{
-				if ( i + 1 > stack_a->size / 2)
+				printf("yyy");
+				if ( i > stack_a->size / 2)
 				{
 					moves = stack_a->size - i - 1;
 					while (moves-- > 0)
@@ -83,7 +85,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 				}
 				else
 				{
-					moves = i;
+					moves = i + 1;
 					while (moves-- > 0)
 					ra(stack_a);
 				}
@@ -94,6 +96,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 	//printf("\nafter WHILE\n");
 	pa(stack_a, stack_b);
 }
+
 
 //  ./push_swap 11 7 3 -6 5 10 -3 -2  bug
 void complex_sort(t_stack *stack_a, t_stack *stack_b)
@@ -120,4 +123,5 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 		printf("\n--POST push_a: stack_b--\n");
 		test_print_stack(stack_b);
 	}
+	sort_a(stack_a);
 }
