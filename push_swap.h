@@ -18,6 +18,16 @@
 #include <unistd.h>
 #include "Libft/libft.h"
 
+// moves_ = quante mosse deve fare;
+// dir_ == -1 se deve salire(ra/rb), == +1 se deve scendere(rra/rrb)
+typedef struct s_moves
+{
+	int	moves_a;
+	int	moves_b;
+	int	idx_b;
+	int	dir_a;
+	int	dir_b;
+} t_moves;
 typedef struct s_stack
 {
 	int *array;
