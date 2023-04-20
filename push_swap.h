@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/15 18:20:19 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/20 19:08:39 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 // dir_ == -1 se deve salire(ra/rb), == +1 se deve scendere(rra/rrb)
 typedef struct s_moves
 {
-	int	moves_a;
-	int	moves_b;
-	int	idx_b;
-	int	dir_a;
-	int	dir_b;
+	int moves_a;
+	int moves_b;
+	int idx_b;
+	int dir_a;
+	int dir_b;
 } t_moves;
 typedef struct s_stack
 {
@@ -66,8 +66,10 @@ void solve_three(t_stack *stack_a);
 void simple_sort(t_stack *stack_a, t_stack *stack_b);
 void complex_sort(t_stack *stack_a, t_stack *stack_b);
 void lis(t_stack *stack_a, t_stack *stack_b);
-int		calculate_moves(t_stack *stack_a, t_stack *stack_b);
-int 	moves_a(t_stack *stack_a, int nbr);
+// int calculate_moves(t_stack *stack_a, t_stack *stack_b);
+//  int 	moves_a(t_stack *stack_a, int nbr);
+t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move);
+int moves_a(t_stack *stack_a, int nbr, t_moves *move);
 
 // TEST
 void test_print_stack(t_stack *stack);
@@ -75,4 +77,5 @@ void test_swap(t_stack *stack_a, t_stack *stack_b);
 void test_rotate(t_stack *stack_a, t_stack *stack_b);
 void test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 void test_push(t_stack *stack_a, t_stack *stack_b);
+void test_print_moves(t_moves *m);
 #endif
