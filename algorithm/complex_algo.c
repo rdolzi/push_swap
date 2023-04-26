@@ -53,6 +53,22 @@ void push_top_b(t_stack *st_a, t_stack *st_b, t_moves *moves)
 	// test_print_stack(st_b);
 }
 
+// restituisce index del min value
+int find_min(t_stack *stack)
+{
+	int i;
+	int min_index;
+
+	i = -1;
+	min_index = 0;
+	while (++i < stack->size)
+	{
+		if (stack->array[min_index] < stack->array[i])
+			min_index = i;
+	}
+	return (min_index);
+}
+
 /*
 // simile a moves_a ma esegue lo shuffle dello stack_a, che alla fine
 // si trova nella posizione corretta per inserimento di B[0], che inserisce.
@@ -137,6 +153,7 @@ void push_a(t_stack *stack_a, t_stack *stack_b)
 // 			min_index = i;
 // 		}
 //   }
+/*
 int find_min_with(t_stack *stack, int nbr)
 {
 	int i;
@@ -163,6 +180,37 @@ int find_min_with(t_stack *stack, int nbr)
 	printf(";;;;MIN_INDEX:%d;;;;;;", min_index);
 	return (min_index);
 }
+*/
+
+//V2
+int find_min_with(t_stack *stack, int nbr)
+{
+	int i;
+	int distance_first;
+	int distance_second;
+	int min_index;
+
+	i = -1;
+	distance_first = 1000;
+	min_index = 0;
+	//printf("distance_first:%d\n", distance_first);
+	while (++i < stack->size)
+	{
+		distance_second = nbr - stack->array[i];
+		if (distance_second < 0)
+			distance_second *= -1;
+		//printf("nbr:%d,stack->array[i(%d)]>%d\n", nbr, i, stack->array[i]);
+		//printf("distance_second:%d\n", distance_second);
+		if (distance_second > 0 && distance_second < distance_first)
+		{
+			distance_first = distance_second;
+			min_index = i;
+		}
+		//printf("distance_first:%d\n", distance_first);
+	}
+	//printf(";;;;MIN_INDEX:%d;;;;;;", min_index);
+	return (min_index);
+}
 
 // V2
 // ./push_swap 11 7 3 113 5 10 4 2 14  45 56 150 > test.txt (non gira per il nbr 2)
@@ -175,13 +223,15 @@ void push_a(t_stack *stack_a, t_stack *stack_b)
 	i = -1;
 	nbr = stack_b->array[0];
 	moves = 0;
+	printf("2222\n");
 	while (++i < stack_a->size)
 	{
+		printf("1111\n");
 		/// printf("\nnbr:%d|array[%d]:%d|array[size - 1]:%d\n", nbr,i, stack_a->array[i], stack_a->array[stack_a->size - 1]);
 		// z./push_swap 6 2 1 3 4 5
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
-			printf("MIAOO\n");
+			printf("OO\n");
 			if (i > stack_a->size / 2)
 			{
 				moves = stack_a->size - i - 1;
@@ -197,14 +247,16 @@ void push_a(t_stack *stack_a, t_stack *stack_b)
 			break;
 		}
 		else
-		{ /// find
-			/// printf("yyy");
+		{
 			printf("find_min_with(stack_a, nbr(%d)):%d\n", nbr, find_min_with(stack_a, nbr));
 			printf("stack_a->size / 2:%d\n", stack_a->size / 2);
 			if (find_min_with(stack_a, nbr) > (stack_a->size / 2))
 			{
 				printf("yyy");
-				moves = stack_a->size - i;
+				// moves = stack_a->size - i;
+				moves = stack_a->size - find_min_with(stack_a, nbr) - 1;
+				printf("moves:%d\n",moves);
+				printf("i:%d, stack_a->size:%d\n",i, stack_a->size);
 				while (moves-- > 0)
 					rra(stack_a);
 			}
@@ -220,21 +272,6 @@ void push_a(t_stack *stack_a, t_stack *stack_b)
 	}
 	// printf("\nafter WHILE\n");
 	pa(stack_a, stack_b);
-}
-// restituisce index del min value
-int find_min(t_stack *stack)
-{
-	int i;
-	int min_index;
-
-	i = -1;
-	min_index = 0;
-	while (++i < stack->size)
-	{
-		if (stack->array[min_index] < stack->array[i])
-			min_index = i;
-	}
-	return (min_index);
 }
 
 void sort_a(t_stack *stack)

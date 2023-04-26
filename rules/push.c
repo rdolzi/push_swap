@@ -19,13 +19,13 @@
 void	pa(t_stack *st_a, t_stack *st_b)
 {
 	int	i;
-	int	temp;
+	//int	temp;
 
 	if (st_b->size == 0)
 		return ;
 	st_a->size++;
 	i = st_a->size;
-	temp = st_a->array[st_a->size - 1];
+	//temp = st_a->array[st_a->size - 1];
 	while (--i > 0)
 		st_a->array[i] = st_a->array[i - 1];
 	st_a->array[0] = st_b->array[0];
@@ -43,13 +43,13 @@ void	pa(t_stack *st_a, t_stack *st_b)
 void	pb(t_stack *st_a, t_stack *st_b)
 {
 	int	i;
-	int	temp;
+	//int	temp;
 
 	if (st_a->size == 0)
 		return ;
 	st_b->size++;
 	i = st_b->size;
-	temp = st_b->array[st_b->size - 1];
+	//temp = st_b->array[st_b->size - 1];
 	while (--i > 0)
 		st_b->array[i] = st_b->array[i - 1];
 	st_b->array[0] = st_a->array[0];

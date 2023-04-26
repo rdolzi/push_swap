@@ -118,7 +118,7 @@ int moves_a(t_stack *stack_a, int nbr, t_moves *move)
 	{
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
-			printf("\ni:%d\n", i);
+			// printf("\ni:%d\n", i);
 			if (i > stack_a->size / 2)
 			{
 				moves = stack_a->size - i - 1;
@@ -137,18 +137,18 @@ int moves_a(t_stack *stack_a, int nbr, t_moves *move)
 			{ // --> verificare con print a cosa punta "i"
 				//./push_swap 11 7 3 113 5 10 -3 -2 14  45 56 150 > test.txt ..dove va 11?
 				// i dovrebbe puntare a 150 per il momento.
-				printf("---dentro caso speciale---\n");
-				printf("st_a[%d]:%d\n", i, stack_a->array[i]);
-				printf("nbr:%d||st_a[%d + 1]:%d\n", nbr, i, stack_a->array[i + 1]);
+				// printf("---dentro caso speciale---\n");
+				// printf("st_a[%d]:%d\n", i, stack_a->array[i]);
+				// printf("nbr:%d||st_a[%d + 1]:%d\n", nbr, i, stack_a->array[i + 1]);
 				if (i > stack_a->size / 2)
 				{
-					printf("YYY");
+					// printf("YYY");
 					moves = stack_a->size - i - 1;
 					move->dir_a = 1;
 				}
 				else
 				{
-					printf("XXX");
+					// printf("XXX");
 					moves = i + 1;
 					move->dir_a = -1;
 				}
