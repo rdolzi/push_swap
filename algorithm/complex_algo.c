@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/28 04:42:51 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/28 05:40:24 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,6 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 		///test_print_stack(stack_b);
 	}
 	sort_a(stack_a);
-	///printf("\nSTACK_A SORTED\n");
-	///test_print_stack(stack_a);
-}
+	// printf("STACK_A SORTED\n");
+	// test_print_stack(stack_a);
+}// ./push_swap 11 1 3 2 4 5 9 6 10 12 8 7

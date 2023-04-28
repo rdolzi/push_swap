@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:11:51 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/07 05:26:15 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/28 05:45:20 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	rb(t_stack *st_b)
 	write(1, "rb\n", 3);
 }
 
-// rr : ra and rb at the same time.
+// rr : ra and rb at the same time. >>>>fix it!!!
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	ra(stack_a);
