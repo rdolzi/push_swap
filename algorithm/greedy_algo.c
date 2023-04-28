@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:50:10 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/28 00:54:04 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/28 04:43:18 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,61 +51,6 @@
 //       3. Muovere in B[0] tale elemento
 //       4. Ruotare A && pa(B)
 
-/*  il sort funziona but not as intended
-//./push_swap 12 8 -3 -5 20 1 16 2 5 -1 13 14 9 0 10 15 18 17 11 7
-int moves_a(t_stack *stack_a, int nbr, t_moves *move)
-{
-	int i;
-	int moves;
-
-	i = -1;
-	moves = 0;
-	while (++i < stack_a->size)
-	{
-		/// ///printf("array[%d]:%d", i, stack_a->array[i]);
-		// ///printf("nbr:%d|array[i]:%d|array[i + 1]:%d\n", nbr, stack_a->array[i], stack_a->array[i + 1]);
-		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
-		{
-			/// ///printf("XXX");
-			if (i > stack_a->size / 2)
-			{
-				moves = stack_a->size - i - 1;
-				move->dir_a = 1;
-			}
-			else
-			{
-				moves = i + 1;
-				move->dir_a = -1;
-			}
-			break;
-		}
-		else
-		{
-			if (nbr < stack_a->array[i] && nbr < stack_a->array[i + 1] && stack_a->array[i] > stack_a->array[i + 1])
-			{ // --> verificare con print a cosa punta "i"
-				//./push_swap 11 7 3 113 5 10 -3 -2 14  45 56 150 > test.txt ..dove va 11?
-				// i dovrebbe puntare a 150 per il momento.
-
-				if (i > stack_a->size / 2)
-				{
-					///printf("YYY");
-					moves = stack_a->size - i - 1;
-					move->dir_a = 1;
-				}
-				else
-				{
-					moves = i + 1;
-					move->dir_a = -1;
-				}
-				break;
-			}
-		}
-	}
-	return (moves);
-}
-*/
-
-// V2. 
 int moves_a(t_stack *stack_a, int nbr, t_moves *move)
 {
 	int i;
@@ -160,7 +105,6 @@ int moves_b(int index, int size, t_moves *move)
 	int moves;
 
 	moves = 0;
-	// ///printf("size(b):%d|index:%d", size, index);
 	if (index > size / 2)
 	{
 		moves = size - index;
@@ -174,8 +118,6 @@ int moves_b(int index, int size, t_moves *move)
 	return (moves);
 }
 
-// V2.
-// fix [√]: ora restituisce l elemento con mosse minori anziche sempre index 0
 t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 {
 	int i;
@@ -192,27 +134,21 @@ t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 	{
 		m_a = moves_a(stack_a, stack_b->array[i], move);
 		m_b = moves_b(i, stack_b->size, move);
-		// ///printf("\nmoves_a:%d |moves_b:%d\n", m_a, m_b);
 		moves[i] = m_a + m_b;
 	}
-	// ///printf("--PRE--\n");
-	// test_print_moves(move);
 	i = -1;
 	to_move = 0;
-	printf("\n--moves--\n");
+	///printf("\n--moves--\n");
 	while (++i < stack_b->size)
 	{
 		if (moves[i] < moves[to_move])
 			to_move = i;
-		printf("moves[%d]:%d\n", i, moves[i]);
+		///printf("moves[%d]:%d\n", i, moves[i]);
 	}
-	//  moves_a ritorna il n mosse e setta la direzione
 	move->moves_a = moves_a(stack_a, stack_b->array[to_move], move);
-	// moves_b ritorna il n mosse e setta la direzione
 	move->moves_b = moves_b(to_move, stack_b->size, move);
-	// setta l index dell elemento di b da spostare
 	move->idx_b = to_move;
-	printf("\n--post--\n");
-	test_print_moves(move);
+	///printf("\n--post--\n");
+	///test_print_moves(move);
 	return (move);
-}
+}// ./push_swap 6 4 14 10 11 7 15 5 1 12 3 13 2 9 8
