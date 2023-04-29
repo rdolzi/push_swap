@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/13 19:19:24 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:02:26 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ int get_max_index(t_stack *stack)
 }
 
 // in uscita fa il free degli stack
-void exit_program(t_stack *stack_a, t_stack *stack_b)
+void exit_program(t_stack *stack_a, t_stack *stack_b, t_moves *moves)
 {
-	free(stack_a->array);
-	free(stack_b->array);
-	// exit(0);
+	if (stack_a->array)
+		free(stack_a->array);
+	if (stack_b->array)
+		free(stack_b->array);
+	if (moves)
+		free(moves);
 }

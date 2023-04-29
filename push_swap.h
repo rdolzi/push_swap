@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/20 19:08:39 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 14:59:14 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void fill_stack(int *stack_a, char **argv, int len);
 // ALGORITHM
 int get_min_index(t_stack *stack);
 int get_max_index(t_stack *stack);
-void exit_program(t_stack *stack_a, t_stack *stack_b);
+void exit_program(t_stack *stack_a, t_stack *stack_b, t_moves *moves);
 void solve_three(t_stack *stack_a);
 void simple_sort(t_stack *stack_a, t_stack *stack_b);
 void complex_sort(t_stack *stack_a, t_stack *stack_b);

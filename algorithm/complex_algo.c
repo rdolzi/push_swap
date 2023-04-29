@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/28 05:40:24 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:09:50 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int find_min(t_stack *stack)
 	return (min_index);
 }
 
-int  find_min_with(t_stack *stack, int nbr)
+int find_min_with(t_stack *stack, int nbr)
 {
 	int i;
 	int distance_first;
@@ -89,7 +89,6 @@ int  find_min_with(t_stack *stack, int nbr)
 	}
 	return (min_index);
 }
-
 
 // // V3 con inserimento t_moves
 // // ./push_swap 11 7 3 113 5 10 4 2 14  45 56 150 > test.txt (non gira per il nbr 2)
@@ -139,7 +138,6 @@ int  find_min_with(t_stack *stack, int nbr)
 // 	pa(stack_a, stack_b);
 // }
 
-
 // V3  split del while
 // ./push_swap 11 7 3 113 5 10 4 2 14  45 56 150 > test.txt (non gira per il nbr 2)
 void push_a(t_stack *stack_a, t_stack *stack_b, t_moves *move)
@@ -151,7 +149,7 @@ void push_a(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 	nbr = stack_b->array[0];
 	while (++i < stack_a->size)
 	{
-		if (move->dir_a == -1 )
+		if (move->dir_a == -1)
 		{
 			while (move->moves_a-- > 0)
 				ra(stack_a);
@@ -170,7 +168,6 @@ void sort_a(t_stack *stack)
 {
 	int moves;
 	int min_idx;
-
 
 	min_idx = find_min(stack);
 	if (min_idx > stack->size / 2)
@@ -196,22 +193,24 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 
 	moves = malloc(sizeof(*moves));
 	lis(stack_a, stack_b);
-	///printf("\n--POST LIS stack_a(SIZE:%d)--\n", stack_a->size);
-	///test_print_stack(stack_a);
-	///printf("\n--POST LIS stack_b(SIZE:%d)--\n", stack_b->size);
-	///test_print_stack(stack_b);
+	/// printf("\n--POST LIS stack_a(SIZE:%d)--\n", stack_a->size);
+	/// test_print_stack(stack_a);
+	/// printf("\n--POST LIS stack_b(SIZE:%d)--\n", stack_b->size);
+	/// test_print_stack(stack_b);
 	len = stack_b->size;
 	while (len-- > 0)
 	{
 		moves = calculate_moves(stack_a, stack_b, moves);
 		push_top_b(stack_a, stack_b, moves);
 		push_a(stack_a, stack_b, moves);
-		///printf("\n--POST MOVES stack_a(SIZE:%d)--\n", stack_a->size);
-		///test_print_stack(stack_a);
-		///printf("\n--POST MOVES stack_b(SIZE:%d)--\n", stack_b->size);
-		///test_print_stack(stack_b);
+		/// printf("\n--POST MOVES stack_a(SIZE:%d)--\n", stack_a->size);
+		/// test_print_stack(stack_a);
+		/// printf("\n--POST MOVES stack_b(SIZE:%d)--\n", stack_b->size);
+		/// test_print_stack(stack_b);
+		free(moves);
 	}
 	sort_a(stack_a);
+	exit_program(stack_a, stack_b, moves);
 	// printf("STACK_A SORTED\n");
 	// test_print_stack(stack_a);
-}// ./push_swap 11 1 3 2 4 5 9 6 10 12 8 7
+} // ./push_swap 11 1 3 2 4 5 9 6 10 12 8 7

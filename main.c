@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/16 15:51:25 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:01:16 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@
 //  3. 100 700-900 mosse
 //  4. 500 5500-7000 mosse
 
-// Algoritmo
-// Check stack ordinato
+// TODO:
 // CHECK DUPLICATE!
-// check limite 8 (5num) e copertura 100%casi
+// solve5
+// leaks
 int main(int argc, char **argv)
 {
 	t_stack stack_a;
@@ -89,10 +89,4 @@ int main(int argc, char **argv)
 	else
 		complex_sort(&stack_a, &stack_b);
 	exit(0);
-
-	// TEST RULES
-	// test_swap(&stack_a, &stack_b);
-	// test_rotate(&stack_a, &stack_b);
-	// test_reverse_rotate(&stack_a, &stack_b);
-	// test_push(&stack_a, &stack_b);
 }

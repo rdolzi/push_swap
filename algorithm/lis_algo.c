@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/20 19:15:03 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 15:07:36 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 			ra(stack_a); // per ottimizzare usare anche rra
 	}
 	free(lis->array);
+	free(lis);
 }
 
 //./push_swap -11 7 3 6 5 10 -3 -2 -1
