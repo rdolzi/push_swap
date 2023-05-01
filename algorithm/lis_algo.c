@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 18:53:19 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/01 19:07:09 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ int is_in_lis(int nb, t_stack *lis)
 }
 
 // mando avanti(ra || rra) n volte finche non posso fare pb
-int shuffle_at(t_stack *st_a, t_stack *lis)
+int shuffle_a(t_stack *st_a, t_stack *lis)
 {
 	int i;
 	int index;
 
 	i = -1;
-	index = 0;
-	printf("%d", st_a->size);
-	while (++i < st_a->size)
+	index = -1;
+	//printf("%d\n", st_a->size);
+	while (++i < st_a->size / 2 + st_a->size % 2)
 	{
-		printf("E");
+		//printf("E\n");
 		if (is_in_lis(st_a->array[i], lis))
 		{
 			index = i;
@@ -54,6 +54,58 @@ int shuffle_at(t_stack *st_a, t_stack *lis)
 	return (index);
 }
 
+// restituisce il valore dell elemento medio, ovvero con index 249
+// int	get_medium(t_stack *st_a)
+// {
+
+// }
+
+
+void	ft_sort_int_tab(int *tab, int size)
+{
+	int	temp;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				temp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+// void	shuffle_b(t_stack *st_b)
+// {
+// 	int nbr;
+
+// 	nbr = st_b->array[0];
+// 	if (st_b->size > 1 && nbr < st_b->array[1])
+// 		rb(st_b);
+// }
+
+int *ft_copy(t_stack *st_a)
+{
+	int i;
+	int *copy;
+
+	i = -1;
+	copy = malloc(st_a->size * sizeof(int));
+	while (++i < st_a->size)
+		copy[i] = st_a->array[i];
+	return (copy);
+}
+
 // Push elementi di STACK_A, non presenti in LIS, in STACK_B.
 void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 {
@@ -62,6 +114,12 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 
 	i = 0;
 	len = stack_a->size - lis->size;
+	int *copy = ft_copy(stack_a);
+	ft_sort_int_tab(copy, stack_a->size);
+	int med;
+
+	med = copy[stack_a->size / 2];
+	free(copy);
 	/// printf("\n stack_a->size:%d, lis->size:%d\n", stack_a->size, lis->size);
 	/// printf("len:%d (elem to move)\n", len);
 	while (len > 0)
@@ -72,6 +130,9 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		{
 			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			pb(stack_a, stack_b);
+			//shuffle_b(stack_b);
+			if (stack_b->array[0] < med)
+				rb(stack_b);
 			/// printf("\n--,stack_a--\n");
 			/// test_print_stack(stack_a);
 			/// printf("\n--,stack_b--\n");
@@ -83,6 +144,9 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			ra(stack_a);
 			pb(stack_a, stack_b);
+			//shuffle_b(stack_b);
+			if (stack_b->array[0] < med)
+				rb(stack_b);
 			/// printf("\n--,stack_a--\n");
 			/// test_print_stack(stack_a);
 			/// printf("\n--,stack_b--\n");
@@ -94,6 +158,9 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			rra(stack_a);
 			pb(stack_a, stack_b);
+			//shuffle_b(stack_b);
+			if (stack_b->array[0] < med)
+				rb(stack_b);
 			/// printf("\n--,stack_a--\n");
 			/// test_print_stack(stack_a);
 			/// printf("\n--,stack_b--\n");
@@ -102,18 +169,29 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		}
 		else
 		{
-			// ra(stack_a); // per ottimizzare usare anche rra
-			i = shuffle_at(stack_a, lis);
+		//  ra(stack_a); // per ottimizzare usare anche rra
+			i = shuffle_a(stack_a, lis);
+			if (i == -1)
+				break ;
 			if (i > stack_a->size / 2)
 			{
-				while (i-- > 0)
+				// i = stack_a->size - i;
+				// while (i > 0)
+				// {
 					rra(stack_a);
+				// 	i--;
+				// }
 			}
 			else
 			{
-				while (i-- > 0)
+				// while (i > 0)
+				// {
 					ra(stack_a);
+				// 	i--;
+				// }
 			}
+		// 	pb(stack_a, stack_b);
+		// 	len--;
 		}
 	}
 	free(lis->array);

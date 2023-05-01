@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 18:52:29 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/01 16:36:58 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,12 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 
 	moves = malloc(sizeof(*moves));
 	lis(stack_a, stack_b);
-	/// printf("\n--POST LIS stack_a(SIZE:%d)--\n", stack_a->size);
-	/// test_print_stack(stack_a);
-	/// printf("\n--POST LIS stack_b(SIZE:%d)--\n", stack_b->size);
-	/// test_print_stack(stack_b);
+			// printf("\n--,stack_a--\n");
+			// test_print_stack(stack_a);
+	// printf("\n--POST LIS stack_a(SIZE:%d)--\n", stack_a->size);
+	// test_print_stack(stack_a);
+	// printf("\n--POST LIS stack_b(SIZE:%d)--\n", stack_b->size);
+	// test_print_stack(stack_b);
 	len = stack_b->size;
 	while (len-- > 0)
 	{
