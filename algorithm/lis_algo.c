@@ -6,13 +6,13 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 15:07:36 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 18:53:19 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// controlla se il numero e' presente il lis
+// controlla se il numero e' presente in lis
 int is_in_lis(int nb, t_stack *lis)
 {
 	int i;
@@ -28,11 +28,39 @@ int is_in_lis(int nb, t_stack *lis)
 	return (0);
 }
 
+// mando avanti(ra || rra) n volte finche non posso fare pb
+int shuffle_at(t_stack *st_a, t_stack *lis)
+{
+	int i;
+	int index;
+
+	i = -1;
+	index = 0;
+	printf("%d", st_a->size);
+	while (++i < st_a->size)
+	{
+		printf("E");
+		if (is_in_lis(st_a->array[i], lis))
+		{
+			index = i;
+			break;
+		}
+		if (is_in_lis(st_a->array[st_a->size - i - 1], lis))
+		{
+			index = i;
+			break;
+		}
+	}
+	return (index);
+}
+
 // Push elementi di STACK_A, non presenti in LIS, in STACK_B.
 void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 {
+	int i;
 	int len;
 
+	i = 0;
 	len = stack_a->size - lis->size;
 	/// printf("\n stack_a->size:%d, lis->size:%d\n", stack_a->size, lis->size);
 	/// printf("len:%d (elem to move)\n", len);
@@ -49,7 +77,7 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 			/// printf("\n--,stack_b--\n");
 			/// test_print_stack(stack_b);
 			len--;
-		} //./push_swap 11 7 3 -6 5 10 -3 -2
+		}
 		else if (!is_in_lis(stack_a->array[1], lis))
 		{
 			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
@@ -70,10 +98,23 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 			/// test_print_stack(stack_a);
 			/// printf("\n--,stack_b--\n");
 			/// test_print_stack(stack_b);
-			len--; ///
+			len--;
 		}
 		else
-			ra(stack_a); // per ottimizzare usare anche rra
+		{
+			// ra(stack_a); // per ottimizzare usare anche rra
+			i = shuffle_at(stack_a, lis);
+			if (i > stack_a->size / 2)
+			{
+				while (i-- > 0)
+					rra(stack_a);
+			}
+			else
+			{
+				while (i-- > 0)
+					ra(stack_a);
+			}
+		}
 	}
 	free(lis->array);
 	free(lis);
@@ -100,14 +141,7 @@ t_stack *setup_stack(t_stack *stack_a, int start_index)
 	stack->size = 1;
 	return (stack);
 }
-// --last lis--
-// 2
-// 5
-// 13
-// 14
-// 15
-// 18
-// 20
+
 t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
 {
 	int i;
@@ -150,7 +184,7 @@ void lis(t_stack *stack_a, t_stack *stack_b)
 	int i;
 	t_stack *a;
 	t_stack *b;
-	//./push_swap 11 7 3 -6 5 10 -3 -2
+
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);
 	/// printf("--STILL get_sequence--\n");
@@ -176,5 +210,4 @@ void lis(t_stack *stack_a, t_stack *stack_b)
 	// printf("\n--last lis--\n");
 	// test_print_stack(a);
 	push_lis(stack_a, stack_b, a);
-	// printf("BREAKPOINT");
 }

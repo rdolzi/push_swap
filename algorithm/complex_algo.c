@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 15:09:50 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/04/29 18:52:29 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,56 +90,6 @@ int find_min_with(t_stack *stack, int nbr)
 	return (min_index);
 }
 
-// // V3 con inserimento t_moves
-// // ./push_swap 11 7 3 113 5 10 4 2 14  45 56 150 > test.txt (non gira per il nbr 2)
-// void push_a(t_stack *stack_a, t_stack *stack_b, t_moves *move)
-// {
-// 	int i;
-// 	int nbr;
-
-// 	i = -1;
-// 	nbr = stack_b->array[0];
-// 	while (++i < stack_a->size)
-// 	{
-// 		printf("\nnbr:%d|array[i(%d)]:%d|array[i + i]:%d\n", nbr,i, stack_a->array[i], stack_a->array[i + 1]);
-// 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
-// 		{
-// 			if (i > stack_a->size / 2)
-// 			{
-// 				printf("1\n");
-// 				while (move->moves_a-- > 0)
-// 					ra(stack_a);
-// 			}
-// 			else
-// 			{
-// 				printf("2\n");
-// 				while (move->moves_a-- > 0)
-// 					rra(stack_a);
-// 			}
-// 			break;
-// 		}
-// 		else
-// 		{
-// 			if (find_min_with(stack_a, nbr) > (stack_a->size / 2))
-// 			{
-// 				printf("3\n");
-// 				while (move->moves_a-- > 0)
-// 					ra(stack_a);
-// 			}
-// 			else
-// 			{
-// 				printf("4\n");
-// 				while (move->moves_a-- > 0)
-// 					rra(stack_a);
-// 			}
-// 			break;
-// 		}
-// 	}
-// 	pa(stack_a, stack_b);
-// }
-
-// V3  split del while
-// ./push_swap 11 7 3 113 5 10 4 2 14  45 56 150 > test.txt (non gira per il nbr 2)
 void push_a(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 {
 	int i;
@@ -184,7 +134,6 @@ void sort_a(t_stack *stack)
 	}
 }
 
-//  ./push_swap 11 7 3 -6 5 10 -3 -2  bug
 void complex_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int len;
@@ -207,10 +156,10 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 		/// test_print_stack(stack_a);
 		/// printf("\n--POST MOVES stack_b(SIZE:%d)--\n", stack_b->size);
 		/// test_print_stack(stack_b);
-		free(moves);
+		// free(moves); ?
 	}
 	sort_a(stack_a);
 	exit_program(stack_a, stack_b, moves);
 	// printf("STACK_A SORTED\n");
 	// test_print_stack(stack_a);
-} // ./push_swap 11 1 3 2 4 5 9 6 10 12 8 7
+}
