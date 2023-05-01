@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:16:03 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 19:33:09 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/01 19:37:20 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void solve_four(t_stack *stack_a, t_stack *stack_b)
 	else
 		rra(stack_a);
 	pb(stack_a, stack_b);
-	/// test_print_stack(stack_b);
 	solve_three(stack_a);
 	pa(stack_a, stack_b);
 }

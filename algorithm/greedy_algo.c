@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:50:10 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/28 04:43:18 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/01 22:50:12 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 	m_a = 0;
 	m_b = 0;
 	i = -1;
-	move = malloc(sizeof(*move));
 	while (++i < stack_b->size)
 	{
 		m_a = moves_a(stack_a, stack_b->array[i], move);
