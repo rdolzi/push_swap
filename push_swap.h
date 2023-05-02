@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 14:59:14 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:22:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void lis(t_stack *stack_a, t_stack *stack_b);
 //  int 	moves_a(t_stack *stack_a, int nbr);
 t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move);
 int moves_a(t_stack *stack_a, int nbr, t_moves *move);
+void check_duplicate(t_stack *st_a);
 
 // TEST
 void test_print_stack(t_stack *stack);

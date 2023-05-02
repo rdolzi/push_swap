@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 22:36:34 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:27:45 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@
 //  4. 500 5500-7000 mosse
 
 // TODO:
-// CHECK DUPLICATE!
 // leaks
 int main(int argc, char **argv)
 {
@@ -86,12 +85,12 @@ int main(int argc, char **argv)
 	initialize_stack(&stack_b, &argc);
 	stack_b.size = 0;
 	fill_stack(stack_a.array, argv, argc);
-	//check_duplicate(&stack_a);
+	check_duplicate(&stack_a);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
 	else
 		complex_sort(&stack_a, &stack_b);
-	if (a == 2)
+	if (a < 2)
 		free(argv);
 	exit(0);
 }

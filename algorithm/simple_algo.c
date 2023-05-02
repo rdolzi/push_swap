@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:16:03 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 19:37:20 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:28:19 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void solve_five(t_stack *stack_a, t_stack *stack_b)
 void simple_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size == 1)
+	{
+		exit_program(stack_a, stack_b, NULL);
 		return;
+	}
 	else if (stack_a->size == 2)
 		solve_two(stack_a);
 	else if (stack_a->size == 3)
