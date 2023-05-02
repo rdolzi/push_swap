@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 19:07:09 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:05:24 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ int shuffle_a(t_stack *st_a, t_stack *lis)
 
 	i = -1;
 	index = -1;
-	//printf("%d\n", st_a->size);
 	while (++i < st_a->size / 2 + st_a->size % 2)
 	{
-		//printf("E\n");
 		if (is_in_lis(st_a->array[i], lis))
 		{
 			index = i;
@@ -54,18 +52,11 @@ int shuffle_a(t_stack *st_a, t_stack *lis)
 	return (index);
 }
 
-// restituisce il valore dell elemento medio, ovvero con index 249
-// int	get_medium(t_stack *st_a)
-// {
-
-// }
-
-
-void	ft_sort_int_tab(int *tab, int size)
+void ft_sort_int_tab(int *tab, int size)
 {
-	int	temp;
-	int	i;
-	int	j;
+	int temp;
+	int i;
+	int j;
 
 	i = 0;
 	while (i < size)
@@ -84,15 +75,6 @@ void	ft_sort_int_tab(int *tab, int size)
 		i++;
 	}
 }
-
-// void	shuffle_b(t_stack *st_b)
-// {
-// 	int nbr;
-
-// 	nbr = st_b->array[0];
-// 	if (st_b->size > 1 && nbr < st_b->array[1])
-// 		rb(st_b);
-// }
 
 int *ft_copy(t_stack *st_a)
 {
@@ -120,85 +102,47 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 
 	med = copy[stack_a->size / 2];
 	free(copy);
-	/// printf("\n stack_a->size:%d, lis->size:%d\n", stack_a->size, lis->size);
-	/// printf("len:%d (elem to move)\n", len);
 	while (len > 0)
 	{
-		/// printf("\n---LEN:%d---\n",len);
-		/// printf("\nstack_a->size:%d\n", stack_a->size);
 		if (!is_in_lis(stack_a->array[0], lis))
 		{
-			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			pb(stack_a, stack_b);
-			//shuffle_b(stack_b);
 			if (stack_b->array[0] < med)
 				rb(stack_b);
-			/// printf("\n--,stack_a--\n");
-			/// test_print_stack(stack_a);
-			/// printf("\n--,stack_b--\n");
-			/// test_print_stack(stack_b);
 			len--;
 		}
 		else if (!is_in_lis(stack_a->array[1], lis))
 		{
-			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			ra(stack_a);
 			pb(stack_a, stack_b);
-			//shuffle_b(stack_b);
 			if (stack_b->array[0] < med)
 				rb(stack_b);
-			/// printf("\n--,stack_a--\n");
-			/// test_print_stack(stack_a);
-			/// printf("\n--,stack_b--\n");
-			/// test_print_stack(stack_b);
 			len--;
 		}
 		else if (!is_in_lis(stack_a->array[stack_a->size - 1], lis))
 		{
-			/// printf("stack_a->array[0]:%d", stack_a->array[0]);
 			rra(stack_a);
 			pb(stack_a, stack_b);
-			//shuffle_b(stack_b);
 			if (stack_b->array[0] < med)
 				rb(stack_b);
-			/// printf("\n--,stack_a--\n");
-			/// test_print_stack(stack_a);
-			/// printf("\n--,stack_b--\n");
-			/// test_print_stack(stack_b);
 			len--;
 		}
 		else
 		{
-		//  ra(stack_a); // per ottimizzare usare anche rra
+			//  ra(stack_a); // per ottimizzare usare anche rra
 			i = shuffle_a(stack_a, lis);
 			if (i == -1)
-				break ;
+				break;
 			if (i > stack_a->size / 2)
-			{
-				// i = stack_a->size - i;
-				// while (i > 0)
-				// {
-					rra(stack_a);
-				// 	i--;
-				// }
-			}
+				rra(stack_a);
 			else
-			{
-				// while (i > 0)
-				// {
-					ra(stack_a);
-				// 	i--;
-				// }
-			}
-		// 	pb(stack_a, stack_b);
-		// 	len--;
+				ra(stack_a);
 		}
 	}
 	free(lis->array);
 	free(lis);
 }
 
-//./push_swap -11 7 3 6 5 10 -3 -2 -1
 // restituisce un array che contiene tutti gli elementi in ordine crescenti
 //  dello stack_a partendo dal index indicato, size volte
 // N.B: Se index arriva alla fine ricomincia circolarmente dal primo
@@ -229,14 +173,10 @@ t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
 	i = 0;
 	j = start_index;
 	stack = setup_stack(stack_a, start_index);
-	// printf("\n>STARRT INDEX%d<\n", j);
-	// printf("\n>:stack->array[0]:%d<\n", stack->array[0]);
 	while (count-- > 0)
 	{
-		// printf("\n>>j:%d||count:%d<<\n", j, count);
 		if (stack_a->array[j] > stack->array[i])
 		{
-			// printf("IF get_sequence|i:%d,j:%d stack_a->array[j]>%d, stack->array[i]%d", i, j, stack_a->array[j], stack->array[i]);
 			stack->array[++i] = stack_a->array[j++];
 			stack->size++;
 			if (j == stack_a->size)
@@ -249,9 +189,6 @@ t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
 			j++;
 		}
 	}
-	// printf("\n--get_sequence--\n");
-	// test_print_stack(stack);
-	// printf("\n");
 	return (stack);
 }
 
@@ -265,16 +202,13 @@ void lis(t_stack *stack_a, t_stack *stack_b)
 
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);
-	/// printf("--STILL get_sequence--\n");
 	while (++i < stack_a->size)
 	{
 		b = get_sequence(stack_a, stack_a->size, i);
-		/// printf("--NEXT ONE get_sequence--\n");
 		if (b->size > a->size)
 		{
 			free(a->array);
 			free(a);
-			/// printf("\nIF>b->size:%d||a->size:%d \n", b->size, a->size);
 			a = b;
 		}
 		else
@@ -282,10 +216,6 @@ void lis(t_stack *stack_a, t_stack *stack_b)
 			free(b->array);
 			free(b);
 		}
-		/// printf("\nLIS:NEW MAX STACK(size:%d)\n", a->size);
-		/// test_print_stack(a);
 	}
-	// printf("\n--last lis--\n");
-	// test_print_stack(a);
 	push_lis(stack_a, stack_b, a);
 }

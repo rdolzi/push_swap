@@ -3,12 +3,13 @@ LIBFT = ./libft
 SRCS = main.c \
 	   ./rules/push.c ./rules/swap.c \
 	   ./rules/rotate.c ./rules/reverse_rotate.c \
-	   ./utils/utils.c ./utils/initialize_arrays.c \
+	   ./utils/initialize_arrays.c \
 	   ./algorithm/simple_algo.c ./algorithm/algo_utils.c \
 	   ./algorithm/complex_algo.c ./algorithm/lis_algo.c \
 	   ./algorithm/greedy_algo.c \
+	   ./test/print_test.c \
 
-FLAGS = 
+FLAGS = -Wextra -Werror -Wall
 
 CC = @gcc ${FLAGS}
 RM = @rm -f

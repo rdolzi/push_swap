@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:05:30 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/29 14:45:50 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:58:52 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,4 @@ void ss(t_stack *stack_a, t_stack *stack_b)
 		stack_b->array[1] = temp;
 	}
 	write(1, "ss\n", 3);
-}
-
-void test_swap(t_stack *stack_a, t_stack *stack_b)
-{
-	printf("initial value stack_a\n");
-	test_print_stack(stack_a);
-	printf("initial value stack_b\n");
-	test_print_stack(stack_b);
-	sa(stack_a);
-	printf("post swap stack_a\n");
-	test_print_stack(stack_a);
-	ss(stack_a, stack_b);
-	printf("post swap both stacks\n");
-	test_print_stack(stack_a);
-	test_print_stack(stack_b);
 }

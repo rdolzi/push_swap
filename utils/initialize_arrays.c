@@ -6,17 +6,28 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/04/11 15:30:43 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 16:58:07 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
-// MALLOC THEORY
-//  https://stackoverflow.com/questions/14768230/malloc-for-struct-and-pointer-in-c
-//  https://stackoverflow.com/questions/605845/do-i-cast-the-result-of-malloc
-//  https://stackoverflow.com/questions/43797750/segfault-while-malloc-in-c-structures
+void check_duplicate(t_stack *st_a)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < st_a->size)
+	{
+		j = i;
+		while (++j < st_a->size)
+		{
+			if (st_a->array[j] == st_a->array[i])
+				exit(write(1, "Error\n", 6));
+		}
+	}
+}
 
 void initialize_stack(t_stack *stack, int *len)
 {
@@ -26,7 +37,6 @@ void initialize_stack(t_stack *stack, int *len)
 		exit(write(1, "Error\n", 6));
 }
 
-// se errore fare i free degli array
 void fill_stack(int *stack_a, char **argv, int len)
 {
 	int i;
@@ -36,11 +46,9 @@ void fill_stack(int *stack_a, char **argv, int len)
 		stack_a[i] = ft_atoi(argv[i]);
 }
 
-// https://stackoverflow.com/questions/15929869/count-the-number-of-elements-in-an-array-in-c
-
-// determina se l input viene passato come variabile o come semplice parametro
+// determina se l input viene passato come variabile
+// o come semplice parametro.
 // se e'caso 1 modifica argc e argv, altrimenti setta solo argc
-
 char **compute_input(int *argc, char **argv)
 {
 	int i;

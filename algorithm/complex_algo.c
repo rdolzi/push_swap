@@ -6,17 +6,11 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 16:36:58 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:55:26 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void test_print_moves(t_moves *m)
-{
-	printf("\nmoves_a:%d, \nmoves_b:%d\n", m->moves_a, m->moves_b);
-	printf("dir_a:%d, \ndir_b:%d\n, \nidx_b:%d\n", m->dir_a, m->dir_b, m->idx_b);
-}
 
 void push_top_b(t_stack *st_a, t_stack *st_b, t_moves *moves)
 {
@@ -138,30 +132,16 @@ void complex_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int len;
 	t_moves *moves;
-	int index_to_move;
 
 	moves = malloc(sizeof(*moves));
 	lis(stack_a, stack_b);
-			// printf("\n--,stack_a--\n");
-			// test_print_stack(stack_a);
-	// printf("\n--POST LIS stack_a(SIZE:%d)--\n", stack_a->size);
-	// test_print_stack(stack_a);
-	// printf("\n--POST LIS stack_b(SIZE:%d)--\n", stack_b->size);
-	// test_print_stack(stack_b);
 	len = stack_b->size;
 	while (len-- > 0)
 	{
 		moves = calculate_moves(stack_a, stack_b, moves);
 		push_top_b(stack_a, stack_b, moves);
 		push_a(stack_a, stack_b, moves);
-		/// printf("\n--POST MOVES stack_a(SIZE:%d)--\n", stack_a->size);
-		/// test_print_stack(stack_a);
-		/// printf("\n--POST MOVES stack_b(SIZE:%d)--\n", stack_b->size);
-		/// test_print_stack(stack_b);
-		// free(moves); ?
 	}
 	sort_a(stack_a);
 	exit_program(stack_a, stack_b, moves);
-	// printf("STACK_A SORTED\n");
-	// test_print_stack(stack_a);
 }

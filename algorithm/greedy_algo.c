@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:50:10 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 22:50:12 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:06:55 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int moves_a(t_stack *stack_a, int nbr, t_moves *move)
 	{
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
-			if (i + 1 > stack_a->size / 2) // era solo i > stack_a->size / 2
+			if (i + 1 > stack_a->size / 2)
 			{
 				moves = stack_a->size - i - 1;
 				move->dir_a = 1;
@@ -77,13 +77,8 @@ int moves_a(t_stack *stack_a, int nbr, t_moves *move)
 		else
 		{
 			if (nbr < stack_a->array[i] && nbr < stack_a->array[i + 1] && stack_a->array[i] > stack_a->array[i + 1])
-			{ // --> verificare con print a cosa punta "i"
-				//./push_swap 11 7 3 113 5 10 -3 -2 14  45 56 150 > test.txt ..dove va 11?
-				// i dovrebbe puntare a 150 per il momento.
-				// ///printf("---dentro caso speciale---\n");
-				// ///printf("st_a[%d]:%d\n", i, stack_a->array[i]);
-				// ///printf("nbr:%d||st_a[%d + 1]:%d\n", nbr, i, stack_a->array[i + 1]);
-				if (i + 1 > stack_a->size / 2) // era solo i > stack_a->size / 2
+			{
+				if (i + 1 > stack_a->size / 2)
 				{
 					moves = stack_a->size - i - 1;
 					move->dir_a = 1;
@@ -137,17 +132,13 @@ t_moves *calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 	}
 	i = -1;
 	to_move = 0;
-	///printf("\n--moves--\n");
 	while (++i < stack_b->size)
 	{
 		if (moves[i] < moves[to_move])
 			to_move = i;
-		///printf("moves[%d]:%d\n", i, moves[i]);
 	}
 	move->moves_a = moves_a(stack_a, stack_b->array[to_move], move);
 	move->moves_b = moves_b(to_move, stack_b->size, move);
 	move->idx_b = to_move;
-	///printf("\n--post--\n");
-	///test_print_moves(move);
 	return (move);
-}// ./push_swap 6 4 14 10 11 7 15 5 1 12 3 13 2 9 8
+}
