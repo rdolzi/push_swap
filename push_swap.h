@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/02 16:22:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:32:57 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdlib.h>
 #include "Libft/libft.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 // moves_ = quante mosse deve fare;
 // dir_ == -1 se deve salire(ra/rb), == +1 se deve scendere(rra/rrb)
@@ -79,4 +86,32 @@ void test_rotate(t_stack *stack_a, t_stack *stack_b);
 void test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
 void test_push(t_stack *stack_a, t_stack *stack_b);
 void test_print_moves(t_moves *m);
+
+//--CHECKER--
+// GNL
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+int		ft_strchr_gnl(char *s1, char c);
+size_t	ft_strlen_gnl(char *str);
+void	*ft_free(char *s1, char *s2);
+size_t	ft_is_newline(char c);
+
+// SWAP
+void sa_c(t_stack *stack_a);
+void sb_c(t_stack *stack_b);
+void ss_c(t_stack *stack_a, t_stack *stack_b);
+
+// ROTATE
+void ra_c(t_stack *stack_a);
+void rb_c(t_stack *stack_b);
+void rr_c(t_stack *stack_a, t_stack *stack_b);
+
+// REVERSE_ROTATE
+void rra_c(t_stack *stack_a);
+void rrb_c(t_stack *stack_b);
+void rrr_c(t_stack *stack_a, t_stack *stack_b);
+
+// PUSH
+void pa_c(t_stack *stack_a, t_stack *stack_b);
+void pb_c(t_stack *stack_a, t_stack *stack_b);
 #endif

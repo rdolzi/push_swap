@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/02 18:07:11 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:59:31 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 //  pre push: remove test in .h && <stdio>
 //  norminette + 2func over 25 lines
 //  checker
+// 	input 
 int main(int argc, char **argv)
 {
 	int a;
