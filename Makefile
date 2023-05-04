@@ -11,7 +11,7 @@ SRCS = ./rules/push.c ./rules/swap.c \
 SRCS_BONUS = ./checker_dir/rules/rotate_c.c ./checker_dir/rules/reverse_rotate_c.c \
 	   ./checker_dir/rules/swap_c.c  ./checker_dir/rules/push_c.c \
 	   ./checker_dir/get_next_line.c ./checker_dir/get_next_line_utils.c \
-	   ./checker_dir/checker.c \
+	   ./checker_dir/checker.c ./checker_dir/checker_utils.c \
 
 FLAGS = -Wextra -Werror -Wall
 

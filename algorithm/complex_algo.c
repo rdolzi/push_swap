@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:39:16 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 04:45:57 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 19:04:00 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ void	push_top_b(t_stack *st_a, t_stack *st_b, t_moves *moves)
 	{
 		while (moves->moves_b-- > 0)
 		{
-			if (moves->dir_a == 1 && moves->moves_a > 0)
-			{
+			if (moves->dir_a == 1 && moves->moves_a-- > 0)
 				rrr(st_a, st_b);
-				moves->moves_a--;
-			}
 			else
 				rrb(st_b);
 		}
@@ -33,31 +30,12 @@ void	push_top_b(t_stack *st_a, t_stack *st_b, t_moves *moves)
 	{
 		while (moves->moves_b-- > 0)
 		{
-			if ((moves->dir_a == -1 && moves->moves_a > 0))
-			{
+			if ((moves->dir_a == -1 && moves->moves_a-- > 0))
 				rr(st_a, st_b);
-				moves->moves_a--;
-			}
 			else
 				rb(st_b);
 		}
 	}
-}
-
-// restituisce index del min value
-int	find_min(t_stack *stack)
-{
-	int	i;
-	int	min_index;
-
-	i = -1;
-	min_index = 0;
-	while (++i < stack->size)
-	{
-		if (stack->array[min_index] < stack->array[i])
-			min_index = i;
-	}
-	return (min_index);
 }
 
 int	find_min_with(t_stack *stack, int nbr)

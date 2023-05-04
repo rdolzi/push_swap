@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:52:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 05:33:52 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:15 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,24 @@ int	ft_checker(char *cmd, t_stack *st_a, t_stack *st_b)
 	return (1);
 }
 
+void	init_checker(int *ac, char **av, t_stack *st_a, t_stack *st_b)
+{
+	av = compute_input(ac, av);
+	initialize_stack(st_a, ac);
+	initialize_stack(st_b, ac);
+	st_b->size = 0;
+	fill_stack(st_a->array, av, *ac);
+	check_duplicate(st_a);
+}
+
+void	exit_checker(t_stack *st_a, t_stack *st_b, int a, char **argv)
+{
+	exit_program(st_a, st_b, NULL);
+	if (a < 2)
+		free(argv);
+	exit(0);
+}
+
 int	main(int argc, char **argv)
 {
 	int		a;
@@ -63,12 +81,7 @@ int	main(int argc, char **argv)
 	a = argc;
 	if (argc < 2)
 		exit(0);
-	argv = compute_input(&argc, argv);
-	initialize_stack(&stack_a, &argc);
-	initialize_stack(&stack_b, &argc);
-	stack_b.size = 0;
-	fill_stack(stack_a.array, argv, argc);
-	check_duplicate(&stack_a);
+	init_checker(&argc, argv, &stack_a, &stack_b);
 	while (1)
 	{
 		cmd = get_next_line(0);
@@ -78,19 +91,10 @@ int	main(int argc, char **argv)
 		{
 			free(cmd);
 			write(1, "Error\n", 6);
-			exit_program(&stack_a, &stack_b, NULL);
-			if (a < 2)
-				free(argv);
-			exit(0);
+			exit_checker(&stack_a, &stack_b, a, argv);
 		}
 		free(cmd);
 	}
-	 if (stack_b.size != 0 || !check_order(&stack_a))
-		write(1, "KO\n", 3);
-	else if (check_order(&stack_a))
-		write(1, "OK\n", 3);
-	exit_program(&stack_a, &stack_b, NULL);
-	if (a < 2)
-		free(argv);
-	exit(0);
+	print_ok_ko(&stack_a, &stack_b);
+	exit_checker(&stack_a, &stack_b, a, argv);
 }
