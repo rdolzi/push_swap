@@ -6,11 +6,25 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 15:50:10 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 04:47:16 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 20:56:04 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	set_move_a(t_stack *stack_a, t_moves *move, int *i, int *moves)
+{
+	if (*i + 1 > stack_a->size / 2)
+	{
+		*moves = stack_a->size - *i - 1;
+		move->dir_a = 1;
+	}
+	else
+	{
+		*moves = *i + 1;
+		move->dir_a = -1;
+	}
+}
 
 // https://www.programiz.com/dsa/greedy-algorithm
 // https://www.geeksforgeeks.org/greedy-algorithms/
@@ -30,7 +44,6 @@
 //       2. Trovare elemento con valore più basso.
 //       3. Muovere in B[0] tale elemento
 //       4. Ruotare A && pa(B)
-
 int	moves_a(t_stack *stack_a, int nbr, t_moves *move)
 {
 	int	i;
@@ -42,16 +55,7 @@ int	moves_a(t_stack *stack_a, int nbr, t_moves *move)
 	{
 		if (nbr > stack_a->array[i] && nbr < stack_a->array[i + 1])
 		{
-			if (i + 1 > stack_a->size / 2)
-			{
-				moves = stack_a->size - i - 1;
-				move->dir_a = 1;
-			}
-			else
-			{
-				moves = i + 1;
-				move->dir_a = -1;
-			}
+			set_move_a(stack_a, move, &i, &moves);
 			break ;
 		}
 		else
@@ -59,16 +63,7 @@ int	moves_a(t_stack *stack_a, int nbr, t_moves *move)
 			if (nbr < stack_a->array[i] && nbr < stack_a->array[i + 1]
 				&& stack_a->array[i] > stack_a->array[i + 1])
 			{
-				if (i + 1 > stack_a->size / 2)
-				{
-					moves = stack_a->size - i - 1;
-					move->dir_a = 1;
-				}
-				else
-				{
-					moves = i + 1;
-					move->dir_a = -1;
-				}
+				set_move_a(stack_a, move, &i, &moves);
 				break ;
 			}
 		}
@@ -97,19 +92,14 @@ int	moves_b(int index, int size, t_moves *move)
 t_moves	*calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move)
 {
 	int	i;
-	int	m_a;
-	int	m_b;
 	int	to_move;
-	int	moves[stack_b->size];
+	int	moves[10000];
 
-	m_a = 0;
-	m_b = 0;
 	i = -1;
 	while (++i < stack_b->size)
 	{
-		m_a = moves_a(stack_a, stack_b->array[i], move);
-		m_b = moves_b(i, stack_b->size, move);
-		moves[i] = m_a + m_b;
+		moves[i] = moves_a(stack_a, stack_b->array[i], move)
+			+ moves_b(i, stack_b->size, move);
 	}
 	i = -1;
 	to_move = 0;

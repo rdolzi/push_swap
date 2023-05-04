@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 20:19:19 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 20:28:26 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void	ft_sort_int_tab(int *tab, int size);
 int		do_things(t_stack *stack_a, t_stack *stack_b, t_stack *lis, int *len);
 
 // TEST
-void	test_print_stack(t_stack *stack);
-void	test_swap(t_stack *stack_a, t_stack *stack_b);
-void	test_rotate(t_stack *stack_a, t_stack *stack_b);
-void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
-void	test_push(t_stack *stack_a, t_stack *stack_b);
-void	test_print_moves(t_moves *m);
+// void	test_print_stack(t_stack *stack);
+// void	test_swap(t_stack *stack_a, t_stack *stack_b);
+// void	test_rotate(t_stack *stack_a, t_stack *stack_b);
+// void	test_reverse_rotate(t_stack *stack_a, t_stack *stack_b);
+// void	test_push(t_stack *stack_a, t_stack *stack_b);
+// void	test_print_moves(t_moves *m);
 
 //--CHECKER--
 void	print_ok_ko(t_stack *st_a, t_stack *st_b);
