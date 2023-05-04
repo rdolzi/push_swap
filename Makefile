@@ -3,10 +3,10 @@ LIBFT = libft
 
 SRCS = ./rules/push.c ./rules/swap.c \
 	   ./rules/rotate.c ./rules/reverse_rotate.c \
-	   ./utils/initialize_arrays.c \
+	   ./utils/initialize_arrays.c ./algorithm/lis_utils.c \
 	   ./algorithm/simple_algo.c ./algorithm/algo_utils.c \
 	   ./algorithm/complex_algo.c ./algorithm/lis_algo.c \
-	   ./algorithm/greedy_algo.c \
+	   ./algorithm/greedy_algo.c ./algorithm/algo_utils2.c \
 
 SRCS_BONUS = ./checker_dir/rules/rotate_c.c ./checker_dir/rules/reverse_rotate_c.c \
 	   ./checker_dir/rules/swap_c.c  ./checker_dir/rules/push_c.c \

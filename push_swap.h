@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:44:47 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 19:06:46 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 20:19:19 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,13 @@ void	solve_three(t_stack *stack_a);
 void	simple_sort(t_stack *stack_a, t_stack *stack_b);
 void	complex_sort(t_stack *stack_a, t_stack *stack_b);
 void	lis(t_stack *stack_a, t_stack *stack_b);
-// int calculate_moves(t_stack *stack_a, t_stack *stack_b);
-//  int 	moves_a(t_stack *stack_a, int nbr);
 t_moves	*calculate_moves(t_stack *stack_a, t_stack *stack_b, t_moves *move);
 int		moves_a(t_stack *stack_a, int nbr, t_moves *move);
 void	check_duplicate(t_stack *st_a);
+int		is_in_lis(int nb, t_stack *lis);
+int		shuffle_a(t_stack *st_a, t_stack *lis);
+void	ft_sort_int_tab(int *tab, int size);
+int		do_things(t_stack *stack_a, t_stack *stack_b, t_stack *lis, int *len);
 
 // TEST
 void	test_print_stack(t_stack *stack);
