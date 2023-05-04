@@ -6,18 +6,11 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:52:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 05:27:01 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 05:33:52 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	test_print_stack(t_stack *stack)
-{
-	int	i = -1;
-	while (++i < stack->size)
-		printf("%d\n", stack->array[i]);
-}
 
 int	check_order(t_stack *st_a)
 {
@@ -57,10 +50,6 @@ int	ft_checker(char *cmd, t_stack *st_a, t_stack *st_b)
 		pb_c(st_a, st_b);
 	else
 		return (0);
-	// printf("\n--\n");
-	// 	test_print_stack(st_a);
-	// 	printf("\n--\n");
-	// 	test_print_stack(st_b);
 	return (1);
 }
 
@@ -87,15 +76,15 @@ int	main(int argc, char **argv)
 			break ;
 		if (!ft_checker(cmd, &stack_a, &stack_b))
 		{
+			free(cmd);
 			write(1, "Error\n", 6);
 			exit_program(&stack_a, &stack_b, NULL);
 			if (a < 2)
 				free(argv);
 			exit(0);
 		}
+		free(cmd);
 	}
-	// test_print_stack(&stack_a);
-	// if (stack_b.size != 0 || !check_order(&stack_a))
 	 if (stack_b.size != 0 || !check_order(&stack_a))
 		write(1, "KO\n", 3);
 	else if (check_order(&stack_a))
