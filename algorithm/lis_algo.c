@@ -6,17 +6,17 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 19:13:20 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/02 17:05:24 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:49:27 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 // controlla se il numero e' presente in lis
-int is_in_lis(int nb, t_stack *lis)
+int	is_in_lis(int nb, t_stack *lis)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = -1;
 	len = lis->size;
@@ -29,10 +29,10 @@ int is_in_lis(int nb, t_stack *lis)
 }
 
 // mando avanti(ra || rra) n volte finche non posso fare pb
-int shuffle_a(t_stack *st_a, t_stack *lis)
+int	shuffle_a(t_stack *st_a, t_stack *lis)
 {
-	int i;
-	int index;
+	int	i;
+	int	index;
 
 	i = -1;
 	index = -1;
@@ -41,22 +41,22 @@ int shuffle_a(t_stack *st_a, t_stack *lis)
 		if (is_in_lis(st_a->array[i], lis))
 		{
 			index = i;
-			break;
+			break ;
 		}
 		if (is_in_lis(st_a->array[st_a->size - i - 1], lis))
 		{
 			index = i;
-			break;
+			break ;
 		}
 	}
 	return (index);
 }
 
-void ft_sort_int_tab(int *tab, int size)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int temp;
-	int i;
-	int j;
+	int	temp;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < size)
@@ -76,10 +76,10 @@ void ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int *ft_copy(t_stack *st_a)
+int	*ft_copy(t_stack *st_a)
 {
-	int i;
-	int *copy;
+	int	i;
+	int	*copy;
 
 	i = -1;
 	copy = malloc(st_a->size * sizeof(int));
@@ -89,17 +89,17 @@ int *ft_copy(t_stack *st_a)
 }
 
 // Push elementi di STACK_A, non presenti in LIS, in STACK_B.
-void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
+void	push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
+	int	med;
+	int	*copy;
 
 	i = 0;
 	len = stack_a->size - lis->size;
-	int *copy = ft_copy(stack_a);
+	copy = ft_copy(stack_a);
 	ft_sort_int_tab(copy, stack_a->size);
-	int med;
-
 	med = copy[stack_a->size / 2];
 	free(copy);
 	while (len > 0)
@@ -129,10 +129,9 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 		}
 		else
 		{
-			//  ra(stack_a); // per ottimizzare usare anche rra
 			i = shuffle_a(stack_a, lis);
 			if (i == -1)
-				break;
+				break ;
 			if (i > stack_a->size / 2)
 				rra(stack_a);
 			else
@@ -149,9 +148,9 @@ void push_lis(t_stack *stack_a, t_stack *stack_b, t_stack *lis)
 // il t_stack ritornato avra':
 //  1. dimensione dell array == stack_a
 //  2. size data dall effettiva lunghezza dell array;
-t_stack *setup_stack(t_stack *stack_a, int start_index)
+t_stack	*setup_stack(t_stack *stack_a, int start_index)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = malloc(sizeof(stack));
 	if (!stack)
@@ -164,11 +163,11 @@ t_stack *setup_stack(t_stack *stack_a, int start_index)
 	return (stack);
 }
 
-t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
+t_stack	*get_sequence(t_stack *stack_a, int count, int start_index)
 {
-	int i;
-	int j;
-	t_stack *stack;
+	int		i;
+	int		j;
+	t_stack	*stack;
 
 	i = 0;
 	j = start_index;
@@ -194,11 +193,11 @@ t_stack *get_sequence(t_stack *stack_a, int count, int start_index)
 
 // tra tutte le sequenze ritorna quella piu grande.
 // quindi le confronta due allavolta.
-void lis(t_stack *stack_a, t_stack *stack_b)
+void	lis(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	t_stack *a;
-	t_stack *b;
+	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
 	i = 0;
 	a = get_sequence(stack_a, stack_a->size, i);

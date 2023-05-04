@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:22:38 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/03 17:30:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:43:08 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 //     Take the first element at the top of b
 //     and put it at the top of a.
 //     Do nothing if b is empty.
-void pa_c(t_stack *st_a, t_stack *st_b)
+void	pa_c(t_stack *st_a, t_stack *st_b)
 {
-	int i;
+	int	i;
 
 	if (st_b->size == 0)
-		return;
+		return ;
 	st_a->size++;
 	i = st_a->size;
 	while (--i > 0)
@@ -37,12 +37,12 @@ void pa_c(t_stack *st_a, t_stack *st_b)
 //     Take the first element at the top of a
 //     and put it at the top of b.
 //     Do nothing if a is empty.
-void pb_c(t_stack *st_a, t_stack *st_b)
+void	pb_c(t_stack *st_a, t_stack *st_b)
 {
-	int i;
+	int	i;
 
 	if (st_a->size == 0)
-		return;
+		return ;
 	st_b->size++;
 	i = st_b->size;
 	while (--i > 0)

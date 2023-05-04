@@ -6,16 +6,16 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:52:12 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/01 22:26:01 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:45:01 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int get_min_index(t_stack *stack)
+int	get_min_index(t_stack *stack)
 {
-	int i;
-	int min;
+	int	i;
+	int	min;
 
 	i = -1;
 	min = 0;
@@ -27,10 +27,10 @@ int get_min_index(t_stack *stack)
 	return (min);
 }
 
-int get_max_index(t_stack *stack)
+int	get_max_index(t_stack *stack)
 {
-	int i;
-	int max;
+	int	i;
+	int	max;
 
 	i = -1;
 	max = 0;
@@ -43,7 +43,7 @@ int get_max_index(t_stack *stack)
 }
 
 // in uscita fa il free degli stack
-void exit_program(t_stack *stack_a, t_stack *stack_b, t_moves *moves)
+void	exit_program(t_stack *stack_a, t_stack *stack_b, t_moves *moves)
 {
 	if (stack_a->array)
 		free(stack_a->array);

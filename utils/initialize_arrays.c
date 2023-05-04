@@ -6,16 +6,16 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/02 16:58:07 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:40:43 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void check_duplicate(t_stack *st_a)
+void	check_duplicate(t_stack *st_a)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < st_a->size)
@@ -29,7 +29,7 @@ void check_duplicate(t_stack *st_a)
 	}
 }
 
-void initialize_stack(t_stack *stack, int *len)
+void	initialize_stack(t_stack *stack, int *len)
 {
 	stack->size = *len;
 	stack->array = malloc(stack->size * sizeof(int));
@@ -37,9 +37,9 @@ void initialize_stack(t_stack *stack, int *len)
 		exit(write(1, "Error\n", 6));
 }
 
-void fill_stack(int *stack_a, char **argv, int len)
+void	fill_stack(int *stack_a, char **argv, int len)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < len)
@@ -49,10 +49,10 @@ void fill_stack(int *stack_a, char **argv, int len)
 // determina se l input viene passato come variabile
 // o come semplice parametro.
 // se e'caso 1 modifica argc e argv, altrimenti setta solo argc
-char **compute_input(int *argc, char **argv)
+char	**compute_input(int *argc, char **argv)
 {
-	int i;
-	char **matrix;
+	int		i;
+	char	**matrix;
 
 	i = 0;
 	if (*argc == 2)

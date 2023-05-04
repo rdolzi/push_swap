@@ -6,14 +6,17 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/03 17:59:31 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:37:24 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // BONUS:
-// If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.   verificare che per empty si intende index zero null(?)
+// If after executing those instructions, the stack a is actually
+// sorted and the stack b is empty, then the program must display
+//"OK" followed by a ’\n’ on the standard output.
+// verificare che per empty si intende index zero null(?)
 
 // ./push_swap -11 7 3 6 5 10 -3 -2 -10 -6 9 1 4
 // leaks --atExit -- ./push_swap 0 -1 2 -5 7
@@ -31,11 +34,11 @@
 //  norminette + 2func over 25 lines
 //  checker
 // 	input 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int a;
-	t_stack stack_a;
-	t_stack stack_b;
+	int		a;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
 	a = argc;
 	if (argc == 1)

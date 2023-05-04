@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 12:00:29 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/02 17:57:27 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 04:41:07 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 //     Take the first element at the top of b
 //     and put it at the top of a.
 //     Do nothing if b is empty.
-void pa(t_stack *st_a, t_stack *st_b)
+void	pa(t_stack *st_a, t_stack *st_b)
 {
-	int i;
+	int	i;
 
 	if (st_b->size == 0)
-		return;
+		return ;
 	st_a->size++;
 	i = st_a->size;
 	while (--i > 0)
@@ -38,12 +38,12 @@ void pa(t_stack *st_a, t_stack *st_b)
 //     Take the first element at the top of a
 //     and put it at the top of b.
 //     Do nothing if a is empty.
-void pb(t_stack *st_a, t_stack *st_b)
+void	pb(t_stack *st_a, t_stack *st_b)
 {
-	int i;
+	int	i;
 
 	if (st_a->size == 0)
-		return;
+		return ;
 	st_b->size++;
 	i = st_b->size;
 	while (--i > 0)
