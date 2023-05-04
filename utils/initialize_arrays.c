@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 04:40:43 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/04 22:28:33 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,45 @@ void	fill_stack(int *stack_a, char **argv, int len)
 // determina se l input viene passato come variabile
 // o come semplice parametro.
 // se e'caso 1 modifica argc e argv, altrimenti setta solo argc
+// char	**compute_input(int *argc, char **argv)
+// {
+// 	int		i;
+// 	char	**matrix;
+
+// 	i = 0;
+// 	if (*argc == 2)
+// 	{
+// 		matrix = ft_split(argv[1], ' ');
+// 		while (matrix[i])
+// 			i++;
+// 		*argc = i;
+// 		return (matrix);
+// 	}
+// 	else
+// 		*argc -= 1;
+// 	return (++argv);
+// }
+
+//V2
 char	**compute_input(int *argc, char **argv)
 {
 	int		i;
+	char	*str;
 	char	**matrix;
 
 	i = 0;
-	if (*argc == 2)
+	str = (char *)malloc(sizeof(char));
+	str[0] = 0;
+	while (++i < *argc)
 	{
-		matrix = ft_split(argv[1], ' ');
-		while (matrix[i])
-			i++;
-		*argc = i;
-		return (matrix);
+		str = ft_strjoin(str, argv[i]);
+		str = ft_strjoin(str, " ");
 	}
-	else
-		*argc -= 1;
-	return (++argv);
+	matrix = ft_split(str, ' ');
+	free(str);
+	i = 0;
+	while (matrix[i])
+		i++;
+	*argc = i;
+	return (matrix);
 }
