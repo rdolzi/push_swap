@@ -1,6 +1,7 @@
 NAME = push_swap
-LIBFT = ./libft
-SRCS = main.c ./rules/push.c ./rules/swap.c \
+LIBFT = libft
+
+SRCS = ./rules/push.c ./rules/swap.c \
 	   ./rules/rotate.c ./rules/reverse_rotate.c \
 	   ./utils/initialize_arrays.c \
 	   ./algorithm/simple_algo.c ./algorithm/algo_utils.c \
@@ -19,39 +20,27 @@ RM = @rm -f
 
 OBJS = ${SRCS:.c=.o}
 
-
-OBJS = ${SRCS:.c=.o}
-
-
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
-
-bonus: $(OBJS) $(OBJS_BONUS) $(LIBFT) 
+$(NAME): $(OBJS) 
 	@make -C $(LIBFT)
-	$(CC) $(OBJS) $(OBJS_BONUS) Libft/libft.a -o $(NAME)
-	$(CC) ./checker_dir/checker.c $(OBJS) Libft/libft.a $(OBJS_BONUS) -o checker
-
-
-
-%.o: %.c
-	$(CC) -g -c $< -o ${<:.c=.o}
-
-		
-$(NAME): $(OBJS) $(LIBFT)
-	@make -C $(LIBFT)
-	$(CC) $(OBJS) 	Libft/libft.a -o $(NAME)
+	$(CC) $(OBJS) Libft/libft.a  main.c -o $(NAME)
 
 all: $(NAME)
+
+bonus: $(OBJS) $(OBJS_BONUS)
 	@make -C $(LIBFT)
+	$(CC) Libft/libft.a $(OBJS) $(OBJS_BONUS) -o checker
+
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} $(OBJS_BONUS)
 	@make clean -C $(LIBFT)
 
 fclean: clean
 	@make fclean -C $(LIBFT)
-	${RM} ${NAME}
+	${RM} ${NAME} checker
 	
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
