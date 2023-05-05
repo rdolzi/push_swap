@@ -6,13 +6,13 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:06:57 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 21:56:50 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:36:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;

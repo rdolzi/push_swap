@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:52:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 22:28:09 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:46:40 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,18 @@ int	ft_checker(char *cmd, t_stack *st_a, t_stack *st_b)
 
 void	init_checker(int *ac, char **av, t_stack *st_a, t_stack *st_b)
 {
+	int	i;
+
+	i = 0;
 	av = compute_input(ac, av);
 	initialize_stack(st_a, ac);
 	initialize_stack(st_b, ac);
 	st_b->size = 0;
 	fill_stack(st_a->array, av, *ac);
 	check_duplicate(st_a);
+	while (av[i])
+		free(av[i]);
+	free(av);
 }
 
 void	exit_checker(t_stack *st_a, t_stack *st_b, int a, char **argv)

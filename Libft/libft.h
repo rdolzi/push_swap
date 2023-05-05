@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 13:00:07 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 21:57:45 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:36:27 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_tolower(int c);
 int			ft_toupper(int c);
 char		*ft_strdup(const char *s1);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char *s1, char const *s2);
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 void		ft_putchar_fd(char c, int fd);
