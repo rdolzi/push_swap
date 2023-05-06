@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:52:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/05 17:46:40 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/06 17:52:17 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_checker(int *ac, char **av, t_stack *st_a, t_stack *st_b)
 	fill_stack(st_a->array, av, *ac);
 	check_duplicate(st_a);
 	while (av[i])
-		free(av[i]);
+		free(av[i++]);
 	free(av);
 }
 
