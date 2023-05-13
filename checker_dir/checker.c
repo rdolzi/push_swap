@@ -6,23 +6,11 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:52:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/06 17:52:17 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/13 21:57:27 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	check_order(t_stack *st_a)
-{
-	int	i;
-
-	i = 0;
-	while (i < (st_a->size - 1) && st_a->array[i] < st_a->array[i + 1])
-		i++;
-	if (i == st_a->size - 1)
-		return (1);
-	return (0);
-}
 
 int	ft_checker(char *cmd, t_stack *st_a, t_stack *st_b)
 {
@@ -96,7 +84,7 @@ int	main(int argc, char **argv)
 		if (!ft_checker(cmd, &stack_a, &stack_b))
 		{
 			free(cmd);
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			exit_checker(&stack_a, &stack_b, a, argv);
 		}
 		free(cmd);

@@ -6,11 +6,23 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:53:46 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/05 17:46:25 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/13 22:06:07 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	check_order(t_stack *st_a)
+{
+	int	i;
+
+	i = 0;
+	while (i < (st_a->size - 1) && st_a->array[i] < st_a->array[i + 1])
+		i++;
+	if (i == st_a->size - 1)
+		return (1);
+	return (0);
+}
 
 void	check_duplicate(t_stack *st_a)
 {
@@ -24,7 +36,7 @@ void	check_duplicate(t_stack *st_a)
 		while (++j < st_a->size)
 		{
 			if (st_a->array[j] == st_a->array[i])
-				exit(write(1, "Error\n", 6));
+				exit(write(2, "Error\n", 6));
 		}
 	}
 }
@@ -34,7 +46,7 @@ void	initialize_stack(t_stack *stack, int *len)
 	stack->size = *len;
 	stack->array = malloc(stack->size * sizeof(int));
 	if (!stack->array)
-		exit(write(1, "Error\n", 6));
+		exit(write(2, "Error\n", 6));
 }
 
 void	fill_stack(int *stack_a, char **argv, int len)
@@ -54,6 +66,8 @@ char	**compute_input(int *argc, char **argv)
 
 	i = 0;
 	str = (char *)malloc(sizeof(char));
+	if (!str)
+		exit(write(2, "Error\n", 6));
 	str[0] = 0;
 	while (++i < *argc)
 	{

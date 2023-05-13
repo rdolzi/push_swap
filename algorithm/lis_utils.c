@@ -6,7 +6,7 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:16:02 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/04 20:18:39 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/13 21:15:24 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	*ft_copy(t_stack *st_a)
 
 	i = -1;
 	copy = malloc(st_a->size * sizeof(int));
+	if (!copy)
+		exit(write(2, "Error\n", 6));
 	while (++i < st_a->size)
 		copy[i] = st_a->array[i];
 	return (copy);

@@ -6,12 +6,16 @@
 /*   By: rdolzi <rdolzi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:10:15 by rdolzi            #+#    #+#             */
-/*   Updated: 2023/05/05 17:14:36 by rdolzi           ###   ########.fr       */
+/*   Updated: 2023/05/13 22:05:45 by rdolzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//TODO:
+//check gia ordinati
+//atoi
+// check se supera int, (long)
 //  limite mosse(per voto massimo scegliere il tier minore):
 //  1. 3   2-3  mosse
 //  2. 5   8-12 mosse
@@ -30,6 +34,8 @@ int	main(int argc, char **argv)
 	stack_b.size = 0;
 	fill_stack(stack_a.array, argv, argc);
 	check_duplicate(&stack_a);
+	if (check_order(&stack_a))
+		exit(0);
 	if (stack_a.size <= 5)
 		simple_sort(&stack_a, &stack_b);
 	else
